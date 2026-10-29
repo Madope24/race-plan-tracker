@@ -1,0 +1,79 @@
+name: Backend — test and deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'deploy/**'
+      - '.github/workflows/deploy-backend.yml'
+  pull_request:
+    paths:
+      - 'backend/**'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: backend/requirements-dev.txt
+
+      - name: Install
+        run: pip install -r backend/requirements-dev.txt
+
+      - name: API tests
+        working-directory: backend
+        run: python -m pytest -q
+
+      - name: Docker image builds
+        run: docker build -t race-plan-api:ci backend
+
+  deploy:
+    needs: test
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    concurrency: deploy-backend
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Copy files to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT || '22' }}
+          source: "backend,deploy"
+          target: ${{ vars.DEPLOY_DIR || '/root/race-plan' }}
+
+      - name: Build and restart on server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT || '22' }}
+          script: |
+            set -e
+            cd "${{ vars.DEPLOY_DIR || '/root/race-plan' }}/deploy"
+            if [ ! -f .env ]; then
+              echo "No .env on the server. Create it once: cp .env.example .env and set API_TOKEN."
+              exit 1
+            fi
+            PROFILE=""
+            if [ "${{ vars.USE_HTTPS }}" = "true" ]; then PROFILE="--profile https"; fi
+            docker compose $PROFILE up -d --build --remove-orphans
+            docker image prune -f >/dev/null
+            set -a; . ./.env; set +a
+            PORT="${API_PORT:-7070}"; PORT="${PORT##*:}"   # API_PORT may be "7070" or "127.0.0.1:7070"
+            for i in 1 2 3 4 5 6 7 8 9 10; do
+              if curl -fsS "http://127.0.0.1:${PORT}/api/health"; then echo; echo "API is up"; exit 0; fi
+              sleep 3
+            done
+            echo "API did not become healthy"; docker compose logs --tail 50 api; exit 1

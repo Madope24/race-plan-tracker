@@ -1,0 +1,2079 @@
+{
+ "version": "2027-plan-2026-10-29",
+ "guides": [
+  {
+   "id": "strength",
+   "title": "Strength",
+   "icon": "strength",
+   "sections": [
+    {
+     "title": "Strength A — legs, hips, trunk (Wednesday, 30 min)",
+     "rows": [
+      [
+       {
+        "label": "Exercise",
+        "value": "Sit-to-stand → squat"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "3 × 8–12"
+       },
+       {
+        "label": "Rest",
+        "value": "60–90 s"
+       },
+       {
+        "label": "How",
+        "value": "Feet hip-width, knees over toes, chest up, sit back"
+       },
+       {
+        "label": "Progression",
+        "value": "Chair → no chair → backpack → 3 s lowering"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Glute bridge"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "3 × 10–12"
+       },
+       {
+        "label": "Rest",
+        "value": "60 s"
+       },
+       {
+        "label": "How",
+        "value": "Ribs down, push through heels, 2 s squeeze"
+       },
+       {
+        "label": "Progression",
+        "value": "Two legs → single leg"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Step-up or reverse lunge"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "3 × 8 per leg"
+       },
+       {
+        "label": "Rest",
+        "value": "60–90 s"
+       },
+       {
+        "label": "How",
+        "value": "Safe 20–30 cm step; no step: reverse lunge holding a wall"
+       },
+       {
+        "label": "Progression",
+        "value": "Add the backpack"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Hip hinge"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "3 × 10"
+       },
+       {
+        "label": "Rest",
+        "value": "60 s"
+       },
+       {
+        "label": "How",
+        "value": "Soft knees, flat back, hips back"
+       },
+       {
+        "label": "Progression",
+        "value": "Good morning → single-leg RDL (hand on wall) → with backpack"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Calf raise"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "3 × 12–15"
+       },
+       {
+        "label": "Rest",
+        "value": "45–60 s"
+       },
+       {
+        "label": "How",
+        "value": "Step edge, full range, 3 s down"
+       },
+       {
+        "label": "Progression",
+        "value": "Two legs → single leg → with backpack"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Bent-knee calf raise"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "2 × 15"
+       },
+       {
+        "label": "Rest",
+        "value": "45 s"
+       },
+       {
+        "label": "How",
+        "value": "Knees bent 30°"
+       },
+       {
+        "label": "Progression",
+        "value": "Single leg"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Dead bug"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "3 × 8 per side"
+       },
+       {
+        "label": "Rest",
+        "value": "45 s"
+       },
+       {
+        "label": "How",
+        "value": "Lower back pressed down"
+       },
+       {
+        "label": "Progression",
+        "value": "Slower, straighter legs"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Side plank"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "3 × 20–40 s per side"
+       },
+       {
+        "label": "Rest",
+        "value": "45 s"
+       },
+       {
+        "label": "How",
+        "value": "Straight line ear-hip-ankle"
+       },
+       {
+        "label": "Progression",
+        "value": "Knees → feet → top-leg lift"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Pelvic-floor finisher"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "1 × 10"
+       },
+       {
+        "label": "How",
+        "value": "Glute bridge with 5 s pelvic-floor squeeze"
+       },
+       {
+        "label": "Progression",
+        "value": "Hold 8 s"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Strength B — upper body, feet, balance (Tuesday evening, 25 min)",
+     "rows": [
+      [
+       {
+        "label": "Exercise",
+        "value": "Push-up"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "3 × 8–12"
+       },
+       {
+        "label": "Rest",
+        "value": "60 s"
+       },
+       {
+        "label": "How",
+        "value": "Body straight, elbows about 45°"
+       },
+       {
+        "label": "Progression",
+        "value": "Wall → table → knees → full"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Backpack bent-over row"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "3 × 10–12"
+       },
+       {
+        "label": "Rest",
+        "value": "60 s"
+       },
+       {
+        "label": "How",
+        "value": "Hinge, flat back, bag to lower ribs"
+       },
+       {
+        "label": "Progression",
+        "value": "Heavier bag, 2 s squeeze"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Overhead press or pike push-up"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "3 × 8–10"
+       },
+       {
+        "label": "Rest",
+        "value": "60 s"
+       },
+       {
+        "label": "How",
+        "value": "Ribs down, press straight up"
+       },
+       {
+        "label": "Progression",
+        "value": "Heavier bag; feet raised"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Single-leg balance"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "3 × 30 s per leg"
+       },
+       {
+        "label": "Rest",
+        "value": "30 s"
+       },
+       {
+        "label": "How",
+        "value": "Soft knee, hips level"
+       },
+       {
+        "label": "Progression",
+        "value": "Eyes closed → folded towel"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Single-leg calf lowering"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "2 × 10 per leg"
+       },
+       {
+        "label": "Rest",
+        "value": "45 s"
+       },
+       {
+        "label": "How",
+        "value": "Up on two legs, down on one over 3 s"
+       },
+       {
+        "label": "Progression",
+        "value": "Add the backpack"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Towel scrunch + tibialis raise"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "2 × 20 + 2 × 15"
+       },
+       {
+        "label": "Rest",
+        "value": "30 s"
+       },
+       {
+        "label": "How",
+        "value": "Scrunch a towel with the toes; back to a wall, lift the toes"
+       },
+       {
+        "label": "Progression",
+        "value": "More reps, slower"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Bird dog"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "3 × 8 per side"
+       },
+       {
+        "label": "Rest",
+        "value": "45 s"
+       },
+       {
+        "label": "How",
+        "value": "Hips level, reach long"
+       },
+       {
+        "label": "Progression",
+        "value": "Hold 3 s"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Front plank"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "3 × 20–45 s"
+       },
+       {
+        "label": "Rest",
+        "value": "45 s"
+       },
+       {
+        "label": "How",
+        "value": "Squeeze glutes, no sag"
+       },
+       {
+        "label": "Progression",
+        "value": "Longer → shoulder taps"
+       }
+      ],
+      [
+       {
+        "label": "Exercise",
+        "value": "Pelvic-floor finisher"
+       },
+       {
+        "label": "Sets × reps",
+        "value": "10 squeezes"
+       },
+       {
+        "label": "How",
+        "value": "5 s squeeze in a deep squat hold"
+       },
+       {
+        "label": "Progression",
+        "value": "Hold 8 s"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Rules",
+     "rows": [
+      [
+       {
+        "label": "Effort",
+        "value": "Stop each set with 2–3 reps left (RPE 7). Never to failure."
+       }
+      ],
+      [
+       {
+        "label": "Progress",
+        "value": "One step up after hitting the top of the rep range at RPE 7 or easier in two sessions."
+       }
+      ],
+      [
+       {
+        "label": "Cutback weeks",
+        "value": "Weeks 4, 8, 11: 2 sets. Week 13: Strength A only. Week 14: upper body only."
+       }
+      ],
+      [
+       {
+        "label": "Normal soreness",
+        "value": "Dull, spread across a muscle, peaks 24–48 h later, eases as you warm up."
+       }
+      ],
+      [
+       {
+        "label": "Warning signs",
+        "value": "Sharp or pinpoint pain, pain on a bone, swelling, limping, pain at night, pain lasting 3+ days."
+       }
+      ],
+      [
+       {
+        "label": "Pain rule",
+        "value": "Up to 3/10 and stable: OK. Above 3 or rising: stop; 3 days walking and swimming only; physio if it lasts a week."
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "swim",
+   "title": "Swimming",
+   "icon": "swim",
+   "sections": [
+    {
+     "title": "Weekly progression (optional)",
+     "rows": [
+      [
+       {
+        "label": "Week",
+        "value": "0"
+       },
+       {
+        "label": "Wednesday",
+        "value": "—"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "100 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "1"
+       },
+       {
+        "label": "Wednesday",
+        "value": "8 × 50 m, 40 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "100 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "2"
+       },
+       {
+        "label": "Wednesday",
+        "value": "6 × 75 m, 40 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "125 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "3"
+       },
+       {
+        "label": "Wednesday",
+        "value": "5 × 100 m, 40 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "150 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "4"
+       },
+       {
+        "label": "Wednesday",
+        "value": "4 × 100 m, 30 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "200 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "5"
+       },
+       {
+        "label": "Wednesday",
+        "value": "4 × 150 m, 45 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "250 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "6"
+       },
+       {
+        "label": "Wednesday",
+        "value": "3 × 200 m, 45 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "300 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "7"
+       },
+       {
+        "label": "Wednesday",
+        "value": "4 × 200 m, 40 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "350 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "8"
+       },
+       {
+        "label": "Wednesday",
+        "value": "3 × 200 m, 40 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "400 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "9"
+       },
+       {
+        "label": "Wednesday",
+        "value": "3 × 250 m, 45 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "450 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "10"
+       },
+       {
+        "label": "Wednesday",
+        "value": "2 × 400 m, 60 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "500 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "11"
+       },
+       {
+        "label": "Wednesday",
+        "value": "3 × 250 m, 45 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "600 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "12"
+       },
+       {
+        "label": "Wednesday",
+        "value": "2 × 400 m, 60 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "600 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "13"
+       },
+       {
+        "label": "Wednesday",
+        "value": "4 × 150 m, 40 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "700 m, very easy"
+       }
+      ],
+      [
+       {
+        "label": "Week",
+        "value": "14"
+       },
+       {
+        "label": "Wednesday",
+        "value": "6 × 50 m easy, 30 s rest"
+       },
+       {
+        "label": "Sunday continuous",
+        "value": "Race day"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Every swim",
+     "rows": [
+      [
+       {
+        "label": "Warm-up",
+        "value": "4 × 25 m easy, 20–30 s rest"
+       }
+      ],
+      [
+       {
+        "label": "Drills",
+        "value": "4 × 25 m: side kick, catch-up freestyle, fingertip drag, six-kick switch"
+       }
+      ],
+      [
+       {
+        "label": "Cool-down",
+        "value": "50–100 m easy backstroke or breaststroke"
+       }
+      ],
+      [
+       {
+        "label": "Breathing",
+        "value": "Breathe out slowly under water; roll to breathe; every 2 or 3 strokes"
+       }
+      ],
+      [
+       {
+        "label": "Goal",
+        "value": "600–700 m continuous by race week; 1,500 m non-stop in March 2027"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nutrition",
+   "title": "Nutrition",
+   "icon": "nutrition",
+   "sections": [
+    {
+     "title": "Targets by day (weeks 0–8)",
+     "rows": [
+      [
+       {
+        "label": "Day",
+        "value": "Monday (fast day)"
+       },
+       {
+        "label": "Calories",
+        "value": "1,800 kcal"
+       },
+       {
+        "label": "Protein",
+        "value": "125 g"
+       },
+       {
+        "label": "Carbs",
+        "value": "190 g"
+       },
+       {
+        "label": "Fat",
+        "value": "62 g"
+       }
+      ],
+      [
+       {
+        "label": "Day",
+        "value": "Tuesday (run + strength B)"
+       },
+       {
+        "label": "Calories",
+        "value": "2,050 kcal"
+       },
+       {
+        "label": "Protein",
+        "value": "140 g"
+       },
+       {
+        "label": "Carbs",
+        "value": "230 g"
+       },
+       {
+        "label": "Fat",
+        "value": "65 g"
+       }
+      ],
+      [
+       {
+        "label": "Day",
+        "value": "Wednesday (strength A + swim)"
+       },
+       {
+        "label": "Calories",
+        "value": "2,000 kcal"
+       },
+       {
+        "label": "Protein",
+        "value": "140 g"
+       },
+       {
+        "label": "Carbs",
+        "value": "220 g"
+       },
+       {
+        "label": "Fat",
+        "value": "65 g"
+       }
+      ],
+      [
+       {
+        "label": "Day",
+        "value": "Thursday (fast day)"
+       },
+       {
+        "label": "Calories",
+        "value": "1,800 kcal"
+       },
+       {
+        "label": "Protein",
+        "value": "125 g"
+       },
+       {
+        "label": "Carbs",
+        "value": "190 g"
+       },
+       {
+        "label": "Fat",
+        "value": "62 g"
+       }
+      ],
+      [
+       {
+        "label": "Day",
+        "value": "Friday (run)"
+       },
+       {
+        "label": "Calories",
+        "value": "2,000 kcal"
+       },
+       {
+        "label": "Protein",
+        "value": "140 g"
+       },
+       {
+        "label": "Carbs",
+        "value": "220 g"
+       },
+       {
+        "label": "Fat",
+        "value": "65 g"
+       }
+      ],
+      [
+       {
+        "label": "Day",
+        "value": "Saturday (long run)"
+       },
+       {
+        "label": "Calories",
+        "value": "2,300 kcal"
+       },
+       {
+        "label": "Protein",
+        "value": "135 g"
+       },
+       {
+        "label": "Carbs",
+        "value": "310 g"
+       },
+       {
+        "label": "Fat",
+        "value": "60 g"
+       }
+      ],
+      [
+       {
+        "label": "Day",
+        "value": "Sunday (swim + recovery)"
+       },
+       {
+        "label": "Calories",
+        "value": "1,950 kcal"
+       },
+       {
+        "label": "Protein",
+        "value": "140 g"
+       },
+       {
+        "label": "Carbs",
+        "value": "205 g"
+       },
+       {
+        "label": "Fat",
+        "value": "65 g"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Adjust every 2 weeks (7-day average weight)",
+     "rows": [
+      [
+       {
+        "label": "Lost more than 1.6 kg",
+        "value": "Add 200 kcal a day, mostly carbohydrate around runs"
+       }
+      ],
+      [
+       {
+        "label": "Lost 0.6–1.6 kg",
+        "value": "On track: change nothing"
+       }
+      ],
+      [
+       {
+        "label": "Lost under 0.6 kg, training good",
+        "value": "Remove 150 kcal a day from oil, sugar or snacks"
+       }
+      ],
+      [
+       {
+        "label": "Lost under 0.6 kg, tired",
+        "value": "Keep calories, fix sleep, reassess in 2 weeks"
+       }
+      ],
+      [
+       {
+        "label": "From week 9",
+        "value": "Add about 150 kcal on Tue and Fri, 250 kcal on Sat"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Dry-fast days (Mon, Thu)",
+     "rows": [
+      [
+       {
+        "label": "04:15–04:45",
+        "value": "Suhoor + 600–800 ml water sipped through the meal"
+       }
+      ],
+      [
+       {
+        "label": "Daytime",
+        "value": "No training. Stay cool. 20-minute nap is fine"
+       }
+      ],
+      [
+       {
+        "label": "18:50",
+        "value": "500 ml water slowly, 3 dates, clear soup"
+       }
+      ],
+      [
+       {
+        "label": "19:20",
+        "value": "Main meal"
+       }
+      ],
+      [
+       {
+        "label": "20:15",
+        "value": "Easy walk 20–30 min, mobility 15 min, slow breathing 5 min"
+       }
+      ],
+      [
+       {
+        "label": "Until bed",
+        "value": "About 1.5–2 litres in total, 250 ml every 20–30 min"
+       }
+      ],
+      [
+       {
+        "label": "Warning signs",
+        "value": "Dizziness, fainting, confusion, racing heart, very dark or no urine: rest in shade and drink"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "meals",
+   "title": "Meal plan",
+   "icon": "meals",
+   "sections": [
+    {
+     "title": "Monday (fast day)",
+     "rows": [
+      [
+       {
+        "label": "Time",
+        "value": "04:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Suhoor"
+       },
+       {
+        "label": "Foods",
+        "value": "oats (dry) 50 g, milk 250 ml, 3 eggs, 1 banana, karanga (groundnuts) 15 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "746 kcal · P 39 g · C 76 g · F 34 g"
+       },
+       {
+        "label": "Note",
+        "value": "Oats cooked in the milk. Drink 600–800 ml water, sipped through the meal. Little salt."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "18:50"
+       },
+       {
+        "label": "Meal",
+        "value": "Break the fast"
+       },
+       {
+        "label": "Foods",
+        "value": "3 dates (tende), 1 bowl clear soup (300 ml)"
+       },
+       {
+        "label": "Estimate",
+        "value": "129 kcal · P 5 g · C 24 g · F 2 g"
+       },
+       {
+        "label": "Note",
+        "value": "500 ml water first, slowly over 15 minutes."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "19:20"
+       },
+       {
+        "label": "Meal",
+        "value": "Main meal"
+       },
+       {
+        "label": "Foods",
+        "value": "rice (cooked) 140 g, chicken, skinless 170 g, maharage (cooked) 100 g, mchicha / greens 150 g, kachumbari 100 g, 2 tsp oil"
+       },
+       {
+        "label": "Estimate",
+        "value": "732 kcal · P 70 g · C 73 g · F 17 g"
+       },
+       {
+        "label": "Note",
+        "value": "Then the easy walk and mobility at about 20:15."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "21:15"
+       },
+       {
+        "label": "Meal",
+        "value": "Evening snack"
+       },
+       {
+        "label": "Foods",
+        "value": "mtindi 250 ml, papai 100 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "193 kcal · P 9 g · C 22 g · F 8 g"
+       },
+       {
+        "label": "Note",
+        "value": "Keep sipping water until bed."
+       }
+      ],
+      [
+       {
+        "label": "Total",
+        "value": "1,800 kcal · protein 122 g · carbs 195 g · fat 61 g"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Tuesday (run + strength B)",
+     "rows": [
+      [
+       {
+        "label": "Time",
+        "value": "05:20"
+       },
+       {
+        "label": "Meal",
+        "value": "Before the run"
+       },
+       {
+        "label": "Foods",
+        "value": "1 banana"
+       },
+       {
+        "label": "Estimate",
+        "value": "105 kcal · P 1 g · C 27 g · F 0 g"
+       },
+       {
+        "label": "Note",
+        "value": "300–400 ml water."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "07:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Breakfast"
+       },
+       {
+        "label": "Foods",
+        "value": "3 eggs, tomato + onion 80 g, viazi vitamu (boiled) 150 g, chungwa 130 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "426 kcal · P 23 g · C 51 g · F 15 g"
+       },
+       {
+        "label": "Note",
+        "value": "Eggs cooked with tomato and onion."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "10:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Snack"
+       },
+       {
+        "label": "Foods",
+        "value": "mtindi 250 ml, karanga (groundnuts) 20 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "263 kcal · P 14 g · C 14 g · F 18 g"
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "13:00"
+       },
+       {
+        "label": "Meal",
+        "value": "Lunch"
+       },
+       {
+        "label": "Foods",
+        "value": "rice (cooked) 150 g, sato (tilapia) 170 g, mchicha / greens 150 g, kachumbari 100 g, 2 tsp oil"
+       },
+       {
+        "label": "Estimate",
+        "value": "555 kcal · P 53 g · C 53 g · F 15 g"
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "16:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Before strength"
+       },
+       {
+        "label": "Foods",
+        "value": "1 banana"
+       },
+       {
+        "label": "Estimate",
+        "value": "105 kcal · P 1 g · C 27 g · F 0 g"
+       },
+       {
+        "label": "Note",
+        "value": "Strength B at about 18:00."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "19:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Dinner"
+       },
+       {
+        "label": "Foods",
+        "value": "ugali 200 g, lean beef 120 g, mchicha / greens 150 g, avocado 30 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "556 kcal · P 43 g · C 59 g · F 17 g"
+       }
+      ],
+      [
+       {
+        "label": "Total",
+        "value": "2,010 kcal · protein 136 g · carbs 231 g · fat 65 g"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Wednesday (strength A + swim)",
+     "rows": [
+      [
+       {
+        "label": "Time",
+        "value": "07:00"
+       },
+       {
+        "label": "Meal",
+        "value": "Breakfast"
+       },
+       {
+        "label": "Foods",
+        "value": "millet/sorghum uji flour 40 g, milk 250 ml, 2 eggs, 1 banana"
+       },
+       {
+        "label": "Estimate",
+        "value": "543 kcal · P 26 g · C 69 g · F 19 g"
+       },
+       {
+        "label": "Note",
+        "value": "Uji made with the milk, 1 tsp sugar at most."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "10:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Snack"
+       },
+       {
+        "label": "Foods",
+        "value": "pumpkin seeds 15 g, embe 100 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "144 kcal · P 5 g · C 17 g · F 8 g"
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "13:00"
+       },
+       {
+        "label": "Meal",
+        "value": "Lunch"
+       },
+       {
+        "label": "Foods",
+        "value": "rice (cooked) 140 g, chicken, skinless 150 g, dengu (cooked) 150 g, mchicha / greens 150 g, 2 tsp oil"
+       },
+       {
+        "label": "Estimate",
+        "value": "721 kcal · P 68 g · C 75 g · F 16 g"
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "16:00"
+       },
+       {
+        "label": "Meal",
+        "value": "Before strength / swim"
+       },
+       {
+        "label": "Foods",
+        "value": "mtindi 250 ml"
+       },
+       {
+        "label": "Estimate",
+        "value": "150 kcal · P 8 g · C 11 g · F 8 g"
+       },
+       {
+        "label": "Note",
+        "value": "Strength A at about 16:45, swim at about 18:00."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "19:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Dinner"
+       },
+       {
+        "label": "Foods",
+        "value": "viazi vitamu (boiled) 200 g, sardines (tinned, drained) 100 g, mchicha / greens 150 g, kachumbari 100 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "442 kcal · P 33 g · C 51 g · F 12 g"
+       }
+      ],
+      [
+       {
+        "label": "Total",
+        "value": "2,000 kcal · protein 140 g · carbs 223 g · fat 63 g"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Thursday (fast day)",
+     "rows": [
+      [
+       {
+        "label": "Time",
+        "value": "04:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Suhoor"
+       },
+       {
+        "label": "Foods",
+        "value": "brown bread 40 g, 1 tbsp peanut butter, 3 eggs, mtindi 250 ml, 1 banana, karanga (groundnuts) 10 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "723 kcal · P 39 g · C 61 g · F 37 g"
+       },
+       {
+        "label": "Note",
+        "value": "600–800 ml water sipped through the meal."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "18:50"
+       },
+       {
+        "label": "Meal",
+        "value": "Break the fast"
+       },
+       {
+        "label": "Foods",
+        "value": "3 dates (tende), 1 bowl clear soup (300 ml)"
+       },
+       {
+        "label": "Estimate",
+        "value": "129 kcal · P 5 g · C 24 g · F 2 g"
+       },
+       {
+        "label": "Note",
+        "value": "500 ml water first, slowly."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "19:20"
+       },
+       {
+        "label": "Meal",
+        "value": "Main meal"
+       },
+       {
+        "label": "Foods",
+        "value": "ugali 220 g, sato (tilapia) 200 g, maharage (cooked) 100 g, mchicha / greens 150 g, 2 tsp oil"
+       },
+       {
+        "label": "Estimate",
+        "value": "754 kcal · P 70 g · C 84 g · F 16 g"
+       },
+       {
+        "label": "Note",
+        "value": "A bit more starch tonight: tomorrow morning is a run."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "21:15"
+       },
+       {
+        "label": "Meal",
+        "value": "Evening snack"
+       },
+       {
+        "label": "Foods",
+        "value": "milk 250 ml, watermelon 150 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "195 kcal · P 9 g · C 24 g · F 8 g"
+       },
+       {
+        "label": "Note",
+        "value": "Keep sipping water until bed."
+       }
+      ],
+      [
+       {
+        "label": "Total",
+        "value": "1,800 kcal · protein 123 g · carbs 193 g · fat 64 g"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Friday (run)",
+     "rows": [
+      [
+       {
+        "label": "Time",
+        "value": "05:20"
+       },
+       {
+        "label": "Meal",
+        "value": "Before the run"
+       },
+       {
+        "label": "Foods",
+        "value": "1 banana"
+       },
+       {
+        "label": "Estimate",
+        "value": "105 kcal · P 1 g · C 27 g · F 0 g"
+       },
+       {
+        "label": "Note",
+        "value": "400 ml water: you are coming off a dry fast."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "07:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Breakfast"
+       },
+       {
+        "label": "Foods",
+        "value": "oats (dry) 40 g, milk 250 ml, 3 eggs, papai 100 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "561 kcal · P 33 g · C 51 g · F 26 g"
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "10:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Snack"
+       },
+       {
+        "label": "Foods",
+        "value": "karanga (groundnuts) 15 g, chungwa 130 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "146 kcal · P 5 g · C 18 g · F 7 g"
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "13:00"
+       },
+       {
+        "label": "Meal",
+        "value": "Lunch"
+       },
+       {
+        "label": "Foods",
+        "value": "ndizi (boiled) 150 g, lean beef 120 g, mchicha / greens 150 g, kachumbari 100 g, 1 tsp oil"
+       },
+       {
+        "label": "Estimate",
+        "value": "516 kcal · P 40 g · C 58 g · F 16 g"
+       },
+       {
+        "label": "Note",
+        "value": "Ndizi stew with beef."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "16:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Snack"
+       },
+       {
+        "label": "Foods",
+        "value": "mtindi 250 ml"
+       },
+       {
+        "label": "Estimate",
+        "value": "150 kcal · P 8 g · C 11 g · F 8 g"
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "19:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Dinner"
+       },
+       {
+        "label": "Foods",
+        "value": "rice (cooked) 100 g, chicken, skinless 120 g, dengu (cooked) 100 g, mchicha / greens 150 g, 1 tsp oil"
+       },
+       {
+        "label": "Estimate",
+        "value": "522 kcal · P 53 g · C 54 g · F 10 g"
+       },
+       {
+        "label": "Note",
+        "value": "Carbs at dinner fuel tomorrow's long run."
+       }
+      ],
+      [
+       {
+        "label": "Total",
+        "value": "2,000 kcal · protein 140 g · carbs 218 g · fat 68 g"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Saturday (long run)",
+     "rows": [
+      [
+       {
+        "label": "Time",
+        "value": "05:00"
+       },
+       {
+        "label": "Meal",
+        "value": "Before the long run"
+       },
+       {
+        "label": "Foods",
+        "value": "brown bread 60 g, 1 tbsp peanut butter, 1 banana"
+       },
+       {
+        "label": "Estimate",
+        "value": "350 kcal · P 11 g · C 56 g · F 10 g"
+       },
+       {
+        "label": "Note",
+        "value": "400–500 ml water."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "during"
+       },
+       {
+        "label": "Meal",
+        "value": "During runs over 90 minutes"
+       },
+       {
+        "label": "Foods",
+        "value": "6 dates (tende)"
+       },
+       {
+        "label": "Estimate",
+        "value": "138 kcal · P 1 g · C 36 g · F 0 g"
+       },
+       {
+        "label": "Note",
+        "value": "Counted here; see the fueling protocol for timing."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "09:00"
+       },
+       {
+        "label": "Meal",
+        "value": "Recovery breakfast"
+       },
+       {
+        "label": "Foods",
+        "value": "2 eggs, Irish potato (boiled) 200 g, milk 250 ml, embe 150 g, 1 tsp oil"
+       },
+       {
+        "label": "Estimate",
+        "value": "598 kcal · P 26 g · C 75 g · F 23 g"
+       },
+       {
+        "label": "Note",
+        "value": "Within 60 minutes of finishing."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "13:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Lunch"
+       },
+       {
+        "label": "Foods",
+        "value": "rice (cooked) 160 g, sato (tilapia) 150 g, mchicha / greens 150 g, kachumbari 100 g, 1 tsp oil"
+       },
+       {
+        "label": "Estimate",
+        "value": "502 kcal · P 48 g · C 56 g · F 10 g"
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "16:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Snack"
+       },
+       {
+        "label": "Foods",
+        "value": "mtindi 250 ml, nanasi 100 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "200 kcal · P 9 g · C 24 g · F 8 g"
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "19:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Dinner"
+       },
+       {
+        "label": "Foods",
+        "value": "ugali 150 g, chicken, skinless 100 g, maharage (cooked) 100 g, mchicha / greens 150 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "502 kcal · P 47 g · C 66 g · F 5 g"
+       }
+      ],
+      [
+       {
+        "label": "Total",
+        "value": "2,290 kcal · protein 142 g · carbs 314 g · fat 56 g"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Sunday (swim + recovery)",
+     "rows": [
+      [
+       {
+        "label": "Time",
+        "value": "07:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Breakfast"
+       },
+       {
+        "label": "Foods",
+        "value": "3 eggs, brown bread 60 g, avocado 50 g, tomato + onion 80 g, chungwa 100 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "513 kcal · P 28 g · C 48 g · F 24 g"
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "11:00"
+       },
+       {
+        "label": "Meal",
+        "value": "Snack"
+       },
+       {
+        "label": "Foods",
+        "value": "mtindi 250 ml, pumpkin seeds 10 g"
+       },
+       {
+        "label": "Estimate",
+        "value": "206 kcal · P 12 g · C 12 g · F 13 g"
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "13:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Lunch"
+       },
+       {
+        "label": "Foods",
+        "value": "rice (cooked) 120 g, lean beef 120 g, maharage (cooked) 120 g, mchicha / greens 150 g, kachumbari 100 g, 1 tsp oil"
+       },
+       {
+        "label": "Estimate",
+        "value": "651 kcal · P 52 g · C 72 g · F 17 g"
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "16:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Before the swim"
+       },
+       {
+        "label": "Foods",
+        "value": "1 banana"
+       },
+       {
+        "label": "Estimate",
+        "value": "105 kcal · P 1 g · C 27 g · F 0 g"
+       },
+       {
+        "label": "Note",
+        "value": "Easy swim at about 17:30."
+       }
+      ],
+      [
+       {
+        "label": "Time",
+        "value": "19:30"
+       },
+       {
+        "label": "Meal",
+        "value": "Dinner"
+       },
+       {
+        "label": "Foods",
+        "value": "viazi vitamu (boiled) 200 g, dagaa (dried) 30 g, chicken, skinless 80 g, mchicha / greens 150 g, 1 tsp oil"
+       },
+       {
+        "label": "Estimate",
+        "value": "480 kcal · P 50 g · C 46 g · F 11 g"
+       },
+       {
+        "label": "Note",
+        "value": "Dagaa cooked with tomato and greens."
+       }
+      ],
+      [
+       {
+        "label": "Total",
+        "value": "1,955 kcal · protein 142 g · carbs 205 g · fat 65 g"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fuel",
+   "title": "Fuelling",
+   "icon": "fuel",
+   "sections": [
+    {
+     "title": "By session length",
+     "rows": [
+      [
+       {
+        "label": "Under 60 min",
+        "value": "Banana + 300–400 ml water before; water to thirst"
+       }
+      ],
+      [
+       {
+        "label": "60–90 min",
+        "value": "Water to thirst (carry 500 ml); 1–2 dates if hot or after a fast day"
+       }
+      ],
+      [
+       {
+        "label": "Over 90 min",
+        "value": "From 30–45 min: 30 g carbohydrate per hour, building to 45–60 g by week 12"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Carbohydrate in foods",
+     "rows": [
+      [
+       {
+        "label": "1 small date",
+        "value": "about 6 g"
+       }
+      ],
+      [
+       {
+        "label": "1 medium banana",
+        "value": "about 27 g"
+       }
+      ],
+      [
+       {
+        "label": "100 ml Coke",
+        "value": "about 10 g"
+       }
+      ],
+      [
+       {
+        "label": "Homemade drink 500 ml",
+        "value": "2 tbsp sugar or honey + pinch of salt + lime: about 25 g"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Hydration",
+     "rows": [
+      [
+       {
+        "label": "Rule",
+        "value": "Drink to thirst. Gaining weight during a run means you drank too much."
+       }
+      ],
+      [
+       {
+        "label": "Sweat rate",
+        "value": "Weigh before and after two long runs: 1 kg lost ≈ 1 litre"
+       }
+      ],
+      [
+       {
+        "label": "Stop and get help",
+        "value": "Dizziness, confusion, vomiting, chills in heat, throbbing headache with swollen hands, chest pain"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "race",
+   "title": "Race plan",
+   "icon": "race",
+   "sections": [
+    {
+     "title": "Kilimanjaro Half Marathon — 7 Feb 2027",
+     "rows": [
+      [
+       {
+        "label": "Start",
+        "value": "07:00, MoCU Gate, Sokoine Road, Moshi"
+       }
+      ],
+      [
+       {
+        "label": "Cut-off",
+        "value": "12:30"
+       }
+      ],
+      [
+       {
+        "label": "Course",
+        "value": "First 8 km climb about 290 m, about 2 km dirt road, then mostly downhill"
+       }
+      ],
+      [
+       {
+        "label": "Water",
+        "value": "About every 4 km; some points also serve Coke"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Pacing plans",
+     "rows": [
+      [
+       {
+        "label": "Plan",
+        "value": "3:00"
+       },
+       {
+        "label": "Use if 5 km test",
+        "value": "36 min or faster"
+       },
+       {
+        "label": "Checkpoints",
+        "value": "5 km 0:49 · 10 km 1:36 · 15 km 2:14 · 20 km 2:52"
+       },
+       {
+        "label": "Paces",
+        "value": "climb 9:49 · return 7:37 per km"
+       }
+      ],
+      [
+       {
+        "label": "Plan",
+        "value": "3:15"
+       },
+       {
+        "label": "Use if 5 km test",
+        "value": "37–40 min"
+       },
+       {
+        "label": "Checkpoints",
+        "value": "5 km 0:53 · 10 km 1:44 · 15 km 2:25 · 20 km 3:06"
+       },
+       {
+        "label": "Paces",
+        "value": "climb 10:38 · return 8:15 per km"
+       }
+      ],
+      [
+       {
+        "label": "Plan",
+        "value": "3:30"
+       },
+       {
+        "label": "Use if 5 km test",
+        "value": "41–43 min"
+       },
+       {
+        "label": "Checkpoints",
+        "value": "5 km 0:57 · 10 km 1:51 · 15 km 2:36 · 20 km 3:20"
+       },
+       {
+        "label": "Paces",
+        "value": "climb 11:27 · return 8:53 per km"
+       }
+      ],
+      [
+       {
+        "label": "Plan",
+        "value": "3:45"
+       },
+       {
+        "label": "Use if 5 km test",
+        "value": "44–47 min"
+       },
+       {
+        "label": "Checkpoints",
+        "value": "5 km 1:01 · 10 km 1:59 · 15 km 2:47 · 20 km 3:35"
+       },
+       {
+        "label": "Paces",
+        "value": "climb 12:16 · return 9:31 per km"
+       }
+      ],
+      [
+       {
+        "label": "Plan",
+        "value": "Finish strong 4:00"
+       },
+       {
+        "label": "Use if 5 km test",
+        "value": "48 min or slower"
+       },
+       {
+        "label": "Checkpoints",
+        "value": "5 km 1:05 · 10 km 2:07 · 15 km 2:58 · 20 km 3:49"
+       },
+       {
+        "label": "Paces",
+        "value": "climb 13:05 · return 10:09 per km"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Race morning",
+     "rows": [
+      [
+       {
+        "label": "03:45",
+        "value": "Wake, toilet, water"
+       }
+      ],
+      [
+       {
+        "label": "04:00",
+        "value": "Bread + honey + 1 tbsp peanut butter, 1 banana, sweet tea or uji (100–120 g carbohydrate)"
+       }
+      ],
+      [
+       {
+        "label": "06:30",
+        "value": "10 min easy walk, leg swings, ankle rocks"
+       }
+      ],
+      [
+       {
+        "label": "06:50",
+        "value": "Line up in the back half"
+       }
+      ],
+      [
+       {
+        "label": "During",
+        "value": "Run-walk from km 1; walk steep climbs; carbohydrate every 20–25 min; drink to thirst"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rules",
+   "title": "Weekly rules",
+   "icon": "rules",
+   "sections": [
+    {
+     "title": "The Sunday decision",
+     "rows": [
+      [
+       {
+        "label": "Green: progress",
+        "value": "≥ 85% done; runs at RPE ≤ 4; pain ≤ 2 and gone next day; sleep ≥ 6.5 h; energy and mood ≥ 3"
+       }
+      ],
+      [
+       {
+        "label": "Amber: repeat",
+        "value": "60–84% done; runs at RPE 5; pain 3 that settles in 24 h; sleep 6–6.4 h; energy or mood < 3"
+       }
+      ],
+      [
+       {
+        "label": "Red: step back",
+        "value": "Pain ≥ 4 or changing your stride; < 60% done; sleep < 6 h; illness; fast weight loss with fatigue"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Stop and get medical help",
+     "rows": [
+      [
+       {
+        "label": "Heart",
+        "value": "Chest pain, fainting, racing or irregular heartbeat, unusual breathlessness"
+       }
+      ],
+      [
+       {
+        "label": "Bone",
+        "value": "Pinpoint bone pain, pain at rest or night, swelling: possible stress fracture"
+       }
+      ],
+      [
+       {
+        "label": "Heat or fluid",
+        "value": "Confusion, staggering, chills in heat, throbbing headache with swollen hands"
+       }
+      ],
+      [
+       {
+        "label": "Fast days",
+        "value": "Fainting, confusion, no urine for 8+ hours"
+       }
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+# Race Plan API on your server.
+#   cp .env.example .env    # then set API_TOKEN (and DOMAIN for HTTPS)
+#   docker compose up -d --build                      # API on http://SERVER_IP:7070
+#   docker compose --profile https up -d --build      # adds Caddy: HTTPS on DOMAIN:773 (see Caddyfile for the certificate note)
+services:
+  api:
+    build: ../backend
+    container_name: race-plan-api
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - DB_PATH=/data/race_plan.db
+    volumes:
+      - race_plan_data:/data
+    ports:
+      - "${API_PORT:-7070}:8080"
+
+  backup:
+    # Copies the database to ./backups every 6 hours and keeps the last 28 copies (7 days).
+    image: alpine:3.20
+    container_name: race-plan-backup
+    restart: unless-stopped
+    volumes:
+      - race_plan_data:/data
+      - ./backups:/backups
+    entrypoint: >
+      sh -c 'apk add --no-cache sqlite >/dev/null;
+             while true; do
+               [ -f /data/race_plan.db ] && sqlite3 /data/race_plan.db ".backup /backups/race_plan_$$(date +%Y%m%d_%H%M).db";
+               ls -1t /backups/race_plan_*.db 2>/dev/null | tail -n +29 | xargs -r rm -f;
+               sleep 21600;
+             done'
+
+  caddy:
+    image: caddy:2.8-alpine
+    container_name: race-plan-caddy
+    restart: unless-stopped
+    profiles: ["https"]
+    env_file: .env
+    ports:
+      - "${HTTP_PORT:-70}:80"
+      - "${HTTPS_PORT:-773}:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    depends_on:
+      - api
+
+volumes:
+  race_plan_data:
+  caddy_data:

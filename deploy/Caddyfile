@@ -1,0 +1,14 @@
+# HTTPS for the Race Plan API, published on the host as DOMAIN:773 (HTTPS_PORT) and :70 (HTTP_PORT).
+#
+# Certificate note: Let's Encrypt always checks domains on port 80 (or 443). With Caddy on 70/773,
+# the first certificate (and each renewal, about every 60 days) needs port 80 on this server to reach Caddy.
+# Either let the proxy that already owns port 80 forward plan.your-domain to 127.0.0.1:70,
+# or set HTTP_PORT=80 in .env if nothing else uses port 80.
+{
+	auto_https disable_redirects
+}
+
+{$DOMAIN} {
+	encode gzip
+	reverse_proxy api:8080
+}
