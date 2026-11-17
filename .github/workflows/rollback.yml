@@ -1,0 +1,51 @@
+name: rollback
+
+# Put a previous server version back: Actions > rollback > Run workflow, then enter the commit SHA of the version you want
+# (every deploy is tagged with its commit; the list is also in ~/salum-tracker/deployed_images.log on the server).
+on:
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: "Commit SHA of the version to restore"
+        required: true
+      environment:
+        description: "staging or production"
+        required: true
+        default: production
+        type: choice
+        options: [production, staging]
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - id: name
+        run: echo "image=ghcr.io/${GITHUB_REPOSITORY,,}-api:${{ inputs.sha }}" >> "$GITHUB_OUTPUT"
+      - uses: appleboy/ssh-action@v1.0.3
+        env:
+          STACK: ${{ inputs.environment == 'staging' && 'salum-tracker-staging' || 'salum-tracker' }}
+          API_IMAGE: ${{ steps.name.outputs.image }}
+          POSTGRES_PASSWORD: ${{ inputs.environment == 'staging' && (secrets.STAGING_POSTGRES_PASSWORD || secrets.POSTGRES_PASSWORD) || secrets.POSTGRES_PASSWORD }}
+          JWT_SECRET: ${{ inputs.environment == 'staging' && (secrets.STAGING_JWT_SECRET || secrets.JWT_SECRET) || secrets.JWT_SECRET }}
+          APP_PORT: ${{ inputs.environment == 'staging' && (vars.STAGING_PORT || '8091') || (vars.APP_PORT || '8090') }}
+          REGISTRATION_MODE: ${{ vars.REGISTRATION_MODE || 'first-only' }}
+          GHCR_USER: ${{ github.actor }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          envs: STACK,API_IMAGE,POSTGRES_PASSWORD,JWT_SECRET,APP_PORT,REGISTRATION_MODE,GHCR_USER,GHCR_TOKEN
+          script_stop: true
+          script: |
+            cd ~/"$STACK"
+            echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USER" --password-stdin
+            sh deploy.sh; rc=$?
+            docker logout ghcr.io
+            exit $rc
