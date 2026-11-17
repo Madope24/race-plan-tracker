@@ -1,0 +1,39 @@
+# Local development: API from source with hot reload, plus Postgres.
+#   docker compose up --build        then open http://localhost:8090/api/docs
+name: enduraforge-dev
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: salum
+      POSTGRES_PASSWORD: dev-password
+      POSTGRES_DB: salum
+    ports:
+      - "5433:5432"
+    volumes:
+      - devdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U salum -d salum"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  api:
+    build: ./server
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://salum:dev-password@db:5432/salum
+      JWT_SECRET: dev-only-secret-change-me-dev-only-secret
+      REGISTRATION_MODE: open
+      LOG_LEVEL: DEBUG
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    volumes:
+      - ./server/app:/srv/app
+    ports:
+      - "8090:8000"
+
+volumes:
+  devdata:

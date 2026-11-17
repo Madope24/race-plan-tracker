@@ -1,135 +1,88 @@
 import 'package:flutter/material.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'app_state.dart';
-import 'reminders.dart';
-import 'screens/guide_screen.dart';
-import 'screens/home_screen.dart';
-import 'screens/session_screen.dart';
-import 'screens/track_screen.dart';
-import 'screens/workouts_screen.dart';
-
-final navigatorKey = GlobalKey<NavigatorState>();
+import 'home_screen.dart';
+import 'nutrition_screen.dart';
+import 'profile_screen.dart';
+import 'progress_screen.dart';
+import 'state.dart';
+import 'training_screen.dart';
+import 'ui.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await appState.load();
-  final reminders = ReminderService.instance;
-  reminders.onOpenSession = (id) {
-    if (appState.sessionById(id) == null) return;
-    navigatorKey.currentState?.push(MaterialPageRoute(builder: (_) => SessionScreen(sessionId: id)));
-  };
-  try {
-    await reminders.init();
-  } catch (e) {
-    debugPrint('Reminders unavailable: $e');
-  }
-  runApp(const RacePlanApp());
+  final st = await AppState.load();
+  runApp(EnduraForgeApp(st: st));
+  st.refreshReminders();
+  st.sync();
 }
 
-class RacePlanApp extends StatefulWidget {
-  const RacePlanApp({super.key});
-
-  @override
-  State<RacePlanApp> createState() => _RacePlanAppState();
-}
-
-class _RacePlanAppState extends State<RacePlanApp> with WidgetsBindingObserver {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-    appState.startAutoSync(); // every 4 minutes while the app is open
-    WidgetsBinding.instance.addPostFrameCallback((_) => _afterFirstFrame());
-  }
-
-  Future<void> _afterFirstFrame() async {
-    final reminders = ReminderService.instance;
-    try {
-      // Ask for notification permission once, on first launch. Later changes happen in Settings.
-      final prefs = await SharedPreferences.getInstance();
-      if (prefs.getString('asked_notifications') == null) {
-        await prefs.setString('asked_notifications', 'yes');
-        await reminders.requestPermissions();
-      } else {
-        await reminders.refreshPermissionState();
-        await reminders.reschedule();
-      }
-      await reminders.handleLaunch();
-    } catch (e) {
-      debugPrint('Reminders unavailable: $e');
-    }
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    appState.stopAutoSync();
-    super.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) {
-      appState.startAutoSync(); // sync immediately on return, then every 4 minutes
-      ReminderService.instance.refreshPermissionState().then((_) => ReminderService.instance.reschedule()).catchError((_) {});
-    } else if (state == AppLifecycleState.paused) {
-      appState.stopAutoSync();
-    }
-  }
+class EnduraForgeApp extends StatelessWidget {
+  final AppState st;
+  const EnduraForgeApp({super.key, required this.st});
 
   @override
   Widget build(BuildContext context) {
-    const seed = Color(0xFF0F7C8C);
-    return MaterialApp(
-      title: 'Race Plan',
-      navigatorKey: navigatorKey,
-      debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: seed),
+    return ListenableBuilder(
+      listenable: st,
+      builder: (context, _) => MaterialApp(
+        title: 'EnduraForge',
+        debugShowCheckedModeBanner: false,
+        theme: buildTheme(st.darkMode),
+        home: HomeShell(st: st),
       ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: seed, brightness: Brightness.dark),
-      ),
-      home: const MainShell(),
     );
   }
 }
 
-class MainShell extends StatefulWidget {
-  const MainShell({super.key});
+class HomeShell extends StatefulWidget {
+  final AppState st;
+  const HomeShell({super.key, required this.st});
 
   @override
-  State<MainShell> createState() => _MainShellState();
+  State<HomeShell> createState() => _HomeShellState();
 }
 
-class _MainShellState extends State<MainShell> {
-  int _tab = 0;
-
-  void goToTab(int i) => setState(() => _tab = i);
+class _HomeShellState extends State<HomeShell> {
+  int tab = 0;
 
   @override
   Widget build(BuildContext context) {
-    final pages = [
-      HomeScreen(onOpenWorkouts: () => goToTab(1)),
-      const WorkoutsScreen(),
-      const TrackScreen(),
-      const GuideScreen(),
+    final st = widget.st;
+    final pages = <Widget>[
+      HomeScreen(st: st, onOpenTraining: () => setState(() => tab = 1), onOpenNutrition: () => setState(() => tab = 2)),
+      TrainingScreen(st: st),
+      NutritionScreen(st: st),
+      ProgressScreen(st: st),
+      ProfileScreen(st: st),
     ];
+    const titles = ['EnduraForge', 'Training', 'Nutrition', 'Progress', 'Profile'];
     return Scaffold(
-      body: IndexedStack(index: _tab, children: pages),
+      appBar: AppBar(
+        title: Text(titles[tab]),
+        actions: [
+          if (st.token != null)
+            IconButton(
+              tooltip: st.syncNote,
+              icon: st.syncing
+                  ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))
+                  : Icon(st.outbox.isEmpty && st.activityOutbox.isEmpty ? Icons.cloud_done_outlined : Icons.cloud_upload_outlined,
+                      color: st.syncNote.startsWith('Not synced') ? C.warn : null),
+              onPressed: () => st.sync(),
+            )
+          else
+            Padding(padding: const EdgeInsets.only(right: 12), child: Icon(Icons.cloud_off_outlined, color: C.mut, size: 20)),
+        ],
+      ),
+      body: SafeArea(child: AnimatedSwitcher(duration: const Duration(milliseconds: 180), child: KeyedSubtree(key: ValueKey(tab), child: pages[tab]))),
       bottomNavigationBar: NavigationBar(
-        selectedIndex: _tab,
-        onDestinationSelected: goToTab,
+        selectedIndex: tab,
+        onDestinationSelected: (i) => setState(() => tab = i),
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.dashboard_outlined), selectedIcon: Icon(Icons.dashboard), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.fitness_center_outlined), selectedIcon: Icon(Icons.fitness_center), label: 'Workouts'),
-          NavigationDestination(icon: Icon(Icons.edit_note_outlined), selectedIcon: Icon(Icons.edit_note), label: 'Track'),
-          NavigationDestination(icon: Icon(Icons.menu_book_outlined), selectedIcon: Icon(Icons.menu_book), label: 'Guide'),
+          NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label: 'Home'),
+          NavigationDestination(icon: Icon(Icons.fitness_center_outlined), selectedIcon: Icon(Icons.fitness_center), label: 'Training'),
+          NavigationDestination(icon: Icon(Icons.restaurant_outlined), selectedIcon: Icon(Icons.restaurant), label: 'Nutrition'),
+          NavigationDestination(icon: Icon(Icons.insights_outlined), selectedIcon: Icon(Icons.insights), label: 'Progress'),
+          NavigationDestination(icon: Icon(Icons.person_outline), selectedIcon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
     );

@@ -1,51 +1,37 @@
-# Race Plan API on your server.
-#   cp .env.example .env    # then set API_TOKEN (and DOMAIN for HTTPS)
-#   docker compose up -d --build                      # API on http://SERVER_IP:7070
-#   docker compose --profile https up -d --build      # adds Caddy: HTTPS on DOMAIN:773 (see Caddyfile for the certificate note)
+# Server stack. The deploy workflow copies this file, deploy.sh and a generated .env to ~/salum-tracker (production)
+# or ~/salum-tracker-staging (staging). The stack name (-p) keeps their databases apart.
+name: salum-tracker
+
 services:
-  api:
-    build: ../backend
-    container_name: race-plan-api
+  db:
+    image: postgres:16-alpine
     restart: unless-stopped
-    env_file: .env
     environment:
-      - DB_PATH=/data/race_plan.db
+      POSTGRES_USER: salum
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: salum
     volumes:
-      - race_plan_data:/data
-    ports:
-      - "${API_PORT:-7070}:8080"
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U salum -d salum"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
 
-  backup:
-    # Copies the database to ./backups every 6 hours and keeps the last 28 copies (7 days).
-    image: alpine:3.20
-    container_name: race-plan-backup
+  api:
+    image: ${API_IMAGE:?set API_IMAGE in .env}
     restart: unless-stopped
-    volumes:
-      - race_plan_data:/data
-      - ./backups:/backups
-    entrypoint: >
-      sh -c 'apk add --no-cache sqlite >/dev/null;
-             while true; do
-               [ -f /data/race_plan.db ] && sqlite3 /data/race_plan.db ".backup /backups/race_plan_$$(date +%Y%m%d_%H%M).db";
-               ls -1t /backups/race_plan_*.db 2>/dev/null | tail -n +29 | xargs -r rm -f;
-               sleep 21600;
-             done'
-
-  caddy:
-    image: caddy:2.8-alpine
-    container_name: race-plan-caddy
-    restart: unless-stopped
-    profiles: ["https"]
-    env_file: .env
-    ports:
-      - "${HTTP_PORT:-70}:80"
-      - "${HTTPS_PORT:-773}:443"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
     depends_on:
-      - api
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://salum:${POSTGRES_PASSWORD}@db:5432/salum
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
+      REGISTRATION_MODE: ${REGISTRATION_MODE:-first-only}
+      TOKEN_DAYS: ${TOKEN_DAYS:-60}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    ports:
+      - "${APP_PORT:-8090}:8000"
 
 volumes:
-  race_plan_data:
-  caddy_data:
+  pgdata:
