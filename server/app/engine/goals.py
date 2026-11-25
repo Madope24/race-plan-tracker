@@ -16,6 +16,8 @@ from .config import D
 
 def hm(minutes):
     h, m = divmod(int(minutes), 60)
+    if not h:
+        return f'{m} min'
     return f'{h} h {m:02d}' if m else f'{h} hours'
 
 
@@ -211,10 +213,15 @@ def build_goals(cfg, cal):
     G(
         'Goal 6',
         'Swimming',
-        'Swim 1,500 m non-stop',
-        f'Swim 1,500 m of continuous freestyle without stopping by {st:%a %d %b %Y}.',
+        'Swim 1,500 m non-stop' + (f' in under {cfg["swim_test_target_min"]} min' if cfg.get('swim_test_target_min') else ''),
+        f'Swim 1,500 m of continuous freestyle without stopping by {st:%a %d %b %Y}'
+        + (
+            f', in under {cfg["swim_test_target_min"]} minutes ({cfg["swim_test_target_min"] * 60 / 15 // 60:.0f}:{cfg["swim_test_target_min"] * 60 / 15 % 60:02.0f} per 100 m).'
+            if cfg.get('swim_test_target_min')
+            else '.'
+        ),
         'Longest non-stop swim (m), logged after every endurance swim. Test swim on the day.',
-        'Two evening swims a week, never on a run day. The Sunday non-stop swim grows about 100 to 150 m in normal weeks.',
+        'Three evening swims a week: technique swims on Tuesday and Thursday (drills, breathing, sighting, even-pace 50s) and the Friday non-stop swim, which grows about 100 to 150 m in normal weeks. Sundays are home workouts only.',
         'The Olympic swim distance, reached early, so the 1.9 km 70.3 swim is the next step.',
         st,
         'm',
@@ -223,17 +230,25 @@ def build_goals(cfg, cal):
         'Higher',
         'maxswim',
     )
-    M('Goal 6', start + dt.timedelta(days=(6 - start.weekday())), 'Baseline: longest non-stop swim (Sunday evening test)', 'm', None, 'Higher', 'maxswim')
+    M('Goal 6', start + dt.timedelta(days=(4 - start.weekday()) % 7), 'Baseline: longest non-stop swim (Friday evening test)', 'm', None, 'Higher', 'maxswim')
     last = 0
     for c in cal.weeks:
-        sun = c['monday'] + dt.timedelta(days=6)
+        sun = c['monday'] + dt.timedelta(days=4)  # the Friday non-stop swim
         if sun >= st:
             break
         v = c['swim_cont'] or 0
         if c['wtype'] in ('build', 'recovery') and v >= last + 200 and v >= 400:
             last = v
             M('Goal 6', sun, f'Swim {v:,} m non-stop', 'm', v, 'Higher', 'maxswim')
-    M('Goal 6', st, 'GOAL: swim 1,500 m non-stop (test day)', 'm', 1500, 'Higher', 'maxswim')
+    M(
+        'Goal 6',
+        st,
+        'GOAL: swim 1,500 m non-stop' + (f' within {cfg["swim_test_target_min"]} min' if cfg.get('swim_test_target_min') else '') + ' (test day)',
+        'm',
+        1500,
+        'Higher',
+        'maxswim',
+    )
 
     # ---- strength, sleep, protein
     s_due = min(end, start + dt.timedelta(days=180))

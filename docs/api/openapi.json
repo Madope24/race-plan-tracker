@@ -3,7 +3,7 @@
   "info": {
     "title": "EnduraForge API",
     "description": "Personal endurance, strength and performance platform. Plan rules are deterministic; see docs/architecture.",
-    "version": "2.2.0"
+    "version": "2.3.0"
   },
   "paths": {
     "/health": {

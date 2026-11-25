@@ -962,6 +962,173 @@ H(
     '2 x 10',
 )
 
+# ============================================================================ walking and running sessions
+H(
+    'Easy walk',
+    'Recovery',
+    'Heart, legs, recovery',
+    'Moves blood through tired legs so they recover faster, burns fat without stress, and keeps the knee moving without impact.',
+    'Comfortable shoes, flat route near home (around the block, the compound or a quiet road). Morning sun if you can: it helps sleep and vitamin D. Water bottle if over 30 min.',
+    [
+        'Start slowly for 3 to 5 minutes, then settle into a brisk but relaxed pace.',
+        'Stand tall: eyes ahead, shoulders down and relaxed, chin level.',
+        'Swing the arms naturally from the shoulders, elbows slightly bent.',
+        'Land on the heel and roll through to push off from the big toe. Short, light steps.',
+        'Breathe through the nose if you can: if you cannot, slow down a little.',
+        'Last 3 minutes slower to finish. Then go straight into the mobility routine while you are warm.',
+    ],
+    'Easy nose breathing; you should be able to talk or hum the whole way.',
+    'Brisk, not rushed. Heart rate about 100 to 125. Quiet feet.',
+    'Walking so fast it becomes a workout; looking down at the phone; long stiff strides that slap the heel.',
+    'Shorter walk (15 min) or two walks of 10 min.',
+    'Walk 40 to 45 min, or add a gentle slope at the end.',
+    '20 to 30 min',
+)
+H(
+    'Easy running',
+    'Running',
+    'Heart and lungs, legs, fat burning',
+    'Easy running builds the engine (heart, blood vessels, mitochondria) that every faster run depends on, with little injury risk. Most of your running should feel like this.',
+    'Running shoes, watch on heart rate. Out before 06:30 to beat the heat. Water with a pinch of salt before you leave. Flat route.',
+    [
+        'Do the 8-minute warm-up first (walk, leg swings, lunges, ankle bounces, A-skips).',
+        'Start slower than you think, the first 5 minutes almost a jog-walk.',
+        'Settle at conversation pace: you can speak full sentences. Heart rate 129 to 145.',
+        'If the heart rate passes 145, slow down or walk 1 minute until it drops, then run again.',
+        'Keep short, quick, quiet steps (about 145 to 150 a minute) and run tall.',
+        'Last 3 minutes easier, then walk 2 minutes and do the cool-down stretches.',
+    ],
+    'Relaxed, rhythmic breathing, for example in for 3 steps and out for 3 steps. Never gasping.',
+    'Slow is the point. Quick steps, tall posture, relaxed hands and shoulders.',
+    'Running easy days too fast (the most common mistake); overstriding; racing your watch pace in the heat.',
+    'Run/walk: 4 min run, 1 min walk.',
+    'Add 5 minutes a week, never more than 10% more running in a week.',
+    'As in the plan',
+)
+H(
+    'Strides',
+    'Running',
+    'Leg speed, running form, cadence',
+    'Short, fast, relaxed runs teach the legs to move quickly without tiring you. They make race pace feel easier and improve form.',
+    'At the end of an easy run, on a flat, smooth stretch of about 80 to 100 m.',
+    [
+        'From a jog, speed up smoothly over 5 seconds.',
+        'Hold a fast but relaxed pace for 10 to 15 seconds: about 85% of a sprint, never all-out.',
+        'Quick, light steps, arms driving front to back, hands loose.',
+        'Ease down smoothly over the last 5 seconds.',
+        'Walk or jog slowly back to the start (60 to 90 seconds) until fully recovered.',
+        'Repeat for the number in the plan, usually 4.',
+    ],
+    'Breathe naturally; you should not be out of breath when the next one starts.',
+    'Fast and relaxed, not hard. Tall, quick feet, smiling face.',
+    'Sprinting all-out; tensing the shoulders and face; starting the next one before you have recovered; strides on a sore knee.',
+    'Shorter strides of 10 s, or skip them if the knee is above 2 out of 10.',
+    '6 strides, or do them on a very slight uphill.',
+    '4 x 20 s, walk back',
+)
+H(
+    'Long run',
+    'Running',
+    'Endurance, fat use, mental toughness, legs',
+    'The long run builds the endurance for the 10 km now and the 12 km and half marathon next: stronger legs, more fuel stored in the muscles, and the confidence to keep going.',
+    'Out at dawn. A flat loop you know, ideally passing water (or carry 500 ml). Watch on heart rate, lap every 1 km. Light snack 30 to 60 min before (banana or 2 dates).',
+    [
+        'Do the 8-minute warm-up.',
+        'Start very easy for the first 2 km, slower than your easy pace.',
+        'Hold conversation pace, heart rate 129 to 145. Walk 1 minute every 10 minutes if the plan says so: these walks are planned, not a failure.',
+        'Drink a few sips every 15 to 20 minutes, more in the heat.',
+        'If the plan has race-pace kilometres, run them in the middle, then return to easy.',
+        'Finish feeling you could do 1 or 2 km more. Walk 5 minutes, drink, stretch, then eat within an hour.',
+    ],
+    'Calm and rhythmic. If you cannot talk, slow down.',
+    'Patience: slow early, steady late. Short quick steps when tired.',
+    'Starting too fast; skipping water; adding distance because it feels good; long runs on a sore knee.',
+    'Cut 1 to 2 km, or more walk breaks.',
+    'Last 1 to 2 km a little faster, only if it felt easy.',
+    'As in the plan',
+)
+H(
+    'Interval and race-pace running',
+    'Running',
+    'Speed, race pace, heart and lungs at higher effort',
+    'Repeats at race pace or faster teach your body and mind the pace you want on race day, and raise the speed you can hold.',
+    'Flat, safe route or a quiet road you know. Watch with lap button. Warm-up done.',
+    [
+        'Run 10 minutes easy after the warm-up drills.',
+        'For each repeat, start the lap and run at the target pace on the plan (watch lap pace, not overall pace).',
+        'Hold an even pace: the last repeat should be as fast as the first, not faster, not slower.',
+        'Walk or jog the recovery exactly as written; start the next repeat when the time is up.',
+        'If you cannot hold the pace, finish that repeat easier and skip the last one: never sprint to make it up.',
+        'Jog 5 to 10 minutes easy to finish, then stretch.',
+    ],
+    'Strong but controlled; you can say a few words, not full sentences.',
+    'Even pace, quick steps, relaxed shoulders. Controlled, not all-out.',
+    'Going out too fast on the first repeat (you did this on 23 Nov); cutting the recoveries short; hills or rough ground.',
+    'One or two fewer repeats, or longer recoveries.',
+    'One more repeat, or shorter recoveries.',
+    'As in the plan',
+)
+H(
+    'Running form',
+    'Running',
+    'Efficiency, knees, calves',
+    'Good form spreads the load, protects the knee and makes every kilometre cheaper.',
+    'Check it every few minutes during each run.',
+    [
+        'Tall: imagine a string pulling the top of your head up; slight lean forward from the ankles, not the waist.',
+        'Quick, short steps: aim for 145 to 150 steps a minute (watch cadence).',
+        'Land with the foot under your hips, knee slightly bent, quietly.',
+        'Arms bent about 90 degrees, swinging front to back, hands relaxed as if holding crisps.',
+        'Eyes 10 to 20 m ahead, jaw and shoulders loose.',
+    ],
+    'Rhythmic breathing in time with your steps.',
+    'Quick, quiet, tall.',
+    'Overstriding with the foot far in front; slapping feet; arms crossing the body; hunching.',
+    '',
+    'Use a metronome app at 150 beats for a few minutes each run.',
+    'Every run',
+)
+
+# ============================================================================ grip and forearms (HYROX base)
+H(
+    'Wrist curls (palms up and down)',
+    'Upper body',
+    'Forearms, grip',
+    'Strong forearms and grip carry the farmers carry and sled pull in HYROX, and protect the elbows and wrists.',
+    'Sit on a chair, forearms resting on your thighs, wrists just past the knees. A 1.5 L bottle or a small jerrycan in each hand.',
+    [
+        'Palms up: let the weight roll down to your fingertips.',
+        'Curl it back into the palm, then curl the wrist up as high as it goes. Squeeze 1 s.',
+        'Lower slowly over 2 s. Do all the reps.',
+        'Turn the palms down and repeat: lift the back of the hand towards you, lower slowly.',
+    ],
+    'Steady breathing; do not hold your breath.',
+    'Forearms stay on the thighs: only the wrists move. Slow on the way down.',
+    'Swinging the arms; lifting the forearms off the thighs; rushing the lowering.',
+    'Lighter bottles; fewer reps palms down (that side is weaker).',
+    'Fuller jerrycan; add a 20 s hold at the top of the last rep.',
+    '3 x 15 palms up + 12 palms down',
+)
+H(
+    'Bent-over rear-delt raise',
+    'Upper body',
+    'Rear shoulders, upper back',
+    'The back of the shoulder balances all the pressing and the swim pull, and gives a fuller, square shoulder.',
+    'Feet hip-width, hinge forward until your chest faces the floor, back flat, a 1.5 L bottle in each hand hanging under the shoulders.',
+    [
+        'Keep a slight bend in the elbows.',
+        'Raise both arms out to the sides until they are level with the shoulders, thumbs slightly down.',
+        'Squeeze the shoulder blades together for 1 s.',
+        'Lower over 2 s.',
+    ],
+    'Breathe out as you lift, in as you lower.',
+    'Lead with the elbows; neck long; back flat throughout.',
+    'Swinging the body up; shrugging; bending the elbows into a row.',
+    'Lighter bottles or lie face-down on a bed.',
+    'Fuller bottles and a 2 s pause at the top.',
+    '3 x 12 to 15',
+)
+
 # Shoulder-care routine and the updated warm-up routines
 LB.WARMUPS.append(
     (
@@ -1007,6 +1174,10 @@ LINK = {
     'Sighting: lift your eyes forward every 6 strokes': 'Sighting drill',
     'Kegels lying down, 10 min': 'Slow kegel holds',
     'Kegels lying down, 5 min': 'Slow kegel holds',
+    'Easy walk outside in the morning sun': 'Easy walk',
+    'Even-pace freestyle': 'Freestyle (front crawl)',
+    'Goal-pace freestyle': 'Freestyle (front crawl)',
+    'Short, quick, quiet steps': 'Running form',
 }
 
 
@@ -1014,6 +1185,29 @@ def link(name: str) -> str | None:
     """The library entry that explains a session row, or None."""
     n = LINK.get(name, name)
     return n if n in LB.L else None
+
+
+RUN_MAIN_LINK = {
+    'RUN-E': 'Easy running',
+    'RUN-S': 'Easy running',
+    'RUN-RAM': 'Easy running',
+    'RUN-RAM-L': 'Long run',
+    'RUN-L': 'Long run',
+    'RUN-I': 'Interval and race-pace running',
+    'SHAKE': 'Easy running',
+}
+
+
+def row_link(code: str, block: str, name: str) -> str | None:
+    """Like link(), and the main part of a run points to how to run that kind of session."""
+    n = link(name)
+    if n:
+        return n
+    if block == 'Main' and code in RUN_MAIN_LINK:
+        return RUN_MAIN_LINK[code]
+    if block == 'Strides':
+        return 'Strides'
+    return None
 
 
 # Drill pairs for the technique swim, by week (week number % len)

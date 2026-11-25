@@ -45,13 +45,13 @@ void main() {
     expect(progression([{'date': 'a', 'sets': List.filled(3, {'kg': 0, 'reps': 12})}], '10 to 12')['action'], 'add_reps');
   });
 
-  test('Thursday is the only fast day; runs mornings, swims evenings', () {
+  test('no weekly fast day; runs mornings, swims evenings', () {
     for (final raw in asList(plan['days'])) {
       final d = asMap(raw);
       final am = d['am'] == null ? '' : asStr(asMap(sessions[d['am']])['code']);
       final pm = d['pm'] == null ? '' : asStr(asMap(sessions[d['pm']])['code']);
-      if (d['weekday'] == 'Thu' && d['race'] == null && d['ramadan'] != true) expect([am, pm].where((c) => c.isNotEmpty).toList(), ['FAST'], reason: asStr(d['date']));
-      if (d['weekday'] == 'Mon') expect(d['fasting'] == true, isFalse, reason: asStr(d['date']));
+      if (d['ramadan'] != true) expect(d['fasting'] == true, isFalse, reason: asStr(d['date']));
+      expect(am == 'FAST' || pm == 'FAST', isFalse, reason: asStr(d['date']));
       expect(pm.startsWith('RUN'), isFalse, reason: asStr(d['date']));
       expect(am.startsWith('SWIM'), isFalse, reason: asStr(d['date']));
     }

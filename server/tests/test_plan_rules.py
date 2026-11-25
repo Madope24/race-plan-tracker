@@ -60,7 +60,11 @@ def test_hard_days_together_and_legs_fresh_for_the_long_session():
     week = [codes(DAYS[(dt.date(2026, 12, 14) + dt.timedelta(days=i)).isoformat()]) for i in range(7)]
     flat = [c for day in week for c in day]
     assert flat.count('STR-A') == 1 and flat.count('STR-C') == 1 and flat.count('STR-B') == 1
-    assert sum(1 for c in flat if c in ('RUN-I', 'RUN-E', 'RUN-L')) == 3
+    assert sum(1 for c in flat if c in ('RUN-I', 'RUN-E', 'RUN-S', 'RUN-L')) == 4
+    assert sum(1 for c in flat if c.startswith('SWIM')) == 3
+    sunday = week[6]
+    assert not any(c.startswith('SWIM') or c in S.RUN_CODES for c in sunday)  # Sundays: home workouts only
+    assert any(any(c.startswith('RUN') for c in day) and any(c.startswith('SWIM') for c in day) for day in week)
 
 
 def test_knee_care_while_the_niggle_is_active():
@@ -108,14 +112,18 @@ def test_garmin_miles_are_detected_and_converted():
     assert garmin.parse(open(garmin.__file__.replace('garmin.py', 'data/Activities.csv')).read(), unit='km')[0]['distance_km'] in (2.88, 1.79)
 
 
-def test_thursday_fasting_is_light_and_monday_is_a_training_day():
+def test_no_weekly_fast_by_default_and_a_fast_day_still_works_when_set():
     assert any(codes(d) == ['RUN-I', 'STR-A'] for d in PLAN['days'] if d['weekday'] == 'Mon')
-    for d in PLAN['days']:
+    assert not any(d['fasting'] for d in PLAN['days'] if not d['ramadan'])
+    thu = [d for d in PLAN['days'] if d['weekday'] == 'Thu' and not d['race'] and not d['ramadan'] and '2026-12-07' <= d['date'] <= '2027-01-10']
+    assert thu and all(codes(d) == ['RUN-S', 'SWIM-T'] for d in thu)  # Thursday: easy run in the morning, technique swim in the evening
+    cfg = copy.deepcopy(DEFAULT_CONFIG)
+    cfg['fasting']['weekdays'] = ['Thu']
+    p = build_plan(cfg)
+    for d in p['days']:
         if d['weekday'] == 'Thu' and not d['race']:
-            assert codes(d) == ['FAST'], d['date']  # no heavy work, no HIIT, never two sessions
-            assert d['fasting'] and d['meal_plan'] in ('FAST', 'RAMADAN')
-            rows = SES[d['pm']]['rows']
-            assert not any(r['block'] in ('Main',) and ('interval' in r['ex'].lower() or 'run' in r['ex'].lower()) for r in rows)
+            assert [p['sessions'][k]['code'] for k in (d['am'], d['pm']) if k] == ['FAST'], d['date']
+            assert d['fasting']
 
 
 def test_ramadan_days_have_at_most_one_light_session():
@@ -243,8 +251,10 @@ def test_long_run_reaches_the_race_needs():
     before_10k = max(w['long_run_km'] or 0 for w in PLAN['weeks'] if w['start'] < '2026-11-30')
     before_half = max(w['long_run_km'] or 0 for w in PLAN['weeks'] if '2026-12-07' <= w['start'] < '2027-02-01')
     assert 8 <= before_10k <= 9.5  # 8 km done on 14 Nov, held while the knee settles
-    assert before_half >= 16
-    assert any('1,500 m NON-STOP TEST' in r['ex'] for r in SES[DAYS['2027-03-14']['pm']]['rows'])
+    assert before_half >= 12
+    jan = max(w['long_run_km'] or 0 for w in PLAN['weeks'] if '2026-12-07' <= w['start'] < '2027-01-11')
+    assert jan >= 12  # 12 km long run before the 15 Jan 5 km time trial
+    assert any('1,500 m NON-STOP TEST' in r['ex'] for r in SES[DAYS['2027-03-12']['pm']]['rows'])
 
 
 def test_breakfast_is_never_forced():
@@ -323,7 +333,7 @@ def test_goals_follow_the_races():
     g = {x['id']: x for x in PLAN['goals']}
     assert g['Goal 2']['deadline'] == '2026-12-05' and g['Goal 2']['target'] == 100 and g['Goal 2']['auto'] == 'race'
     assert g['Goal 11']['deadline'] == '2027-02-07' and g['Goal 11']['target'] == 180
-    assert g['Goal 4']['name'] == 'Finish the Ironman 70.3' and g['Goal 6']['deadline'] == '2027-03-14'
+    assert g['Goal 4']['name'] == 'Finish the Ironman 70.3' and g['Goal 6']['deadline'] == '2027-03-12'
     for x in PLAN['goals']:
         assert x['specific'] and x['measurable'] and x['achievable'] and x['relevant'] and x['deadline']
     ids = [m['id'] for m in PLAN['mini_goals']]

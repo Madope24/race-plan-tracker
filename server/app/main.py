@@ -30,7 +30,7 @@ from .engine.config import merge, validate
 from .security import OptionalUserId, UserId, hash_password, make_token, verify_password
 
 REGISTRATION_MODE = os.environ.get('REGISTRATION_MODE', 'first-only')  # first-only | open | closed
-APP_VERSION = '2.2.0'
+APP_VERSION = '2.3.0'
 
 log = logging.getLogger('enduraforge')
 logging.basicConfig(level=os.environ.get('LOG_LEVEL', 'INFO'), format='%(message)s')

@@ -90,7 +90,7 @@ class Pages {
         ),
         _rules('Avoiding swimming injuries', 'swimming', C.swim),
         _routine('SHOULDER'),
-        ..._weekTable('swim_cont_m', 'm', 'Sunday non-stop swim progression'),
+        ..._weekTable('swim_cont_m', 'm', 'Friday non-stop swim progression'),
         _routine('W-SWIM'),
         _routine('C-SWIM'),
         _stopSigns(),

@@ -162,7 +162,7 @@ class SessionCard extends StatelessWidget {
     }
   }
 
-  static const _stretchBlocks = {'Warm-up', 'Warm-up on the pool deck', 'Cool-down stretch', 'Cool-down in the water', 'Mobility', 'Hydration', 'Progress', 'Warm-up in the water'};
+  static const _stretchBlocks = {'Warm-up', 'Warm-up on the pool deck', 'Cool-down stretch', 'Cool-down in the water', 'Hydration', 'Progress', 'Warm-up in the water'};
 
   /// One exercise, stacked vertically: tick box and name, today's amount, the coach note, then the full how-to.
   Widget _row(BuildContext context, Map<String, dynamic> s, Map<String, dynamic> r) {

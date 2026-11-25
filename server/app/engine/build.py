@@ -18,7 +18,7 @@ from . import sessions as S
 from .config import D, merge, validate
 from .goals import build_goals
 
-ENGINE_VERSION = '2.2.0'
+ENGINE_VERSION = '2.3.0'
 FOOD = {f[0]: f for f in N.FOODS}
 _SEED_CSV = os.path.join(os.path.dirname(__file__), 'data', 'Activities.csv')
 SEED = GA.parse(open(_SEED_CSV, encoding='utf-8').read()) if os.path.exists(_SEED_CSV) else []
@@ -142,7 +142,8 @@ def build_plan(user_cfg: dict | None = None) -> dict:
                 strength=code in S.STRENGTH_CODES,
                 meta=S.session_meta(code, rows, c, cfg),
                 rows=[
-                    dict(id=f'{key}:{i}', block=r[0], ex=r[1], lib=HT.link(r[1]), sets=r[2], reps=str(r[3]), rest=r[4], note=r[5]) for i, r in enumerate(rows)
+                    dict(id=f'{key}:{i}', block=r[0], ex=r[1], lib=HT.row_link(code, r[0], r[1]), sets=r[2], reps=str(r[3]), rest=r[4], note=r[5])
+                    for i, r in enumerate(rows)
                 ],
             )
         return key
@@ -257,7 +258,7 @@ def build_plan(user_cfg: dict | None = None) -> dict:
         dict(key='waist', label='Waist at the navel (cm)', when='Week 1 test day'),
         dict(key='pushups', label='Max push-ups', when='Week 1 test day'),
         dict(key='run5k', label='5 km run/walk time (min)', when='First long run'),
-        dict(key='swim', label='Longest non-stop swim (m)', when='First Sunday swim'),
+        dict(key='swim', label='Longest non-stop swim (m)', when='First Friday swim'),
         dict(key='plank', label='Plank hold (s)', when='Week 1 test day'),
         dict(key='wallsit', label='Wall sit (s)', when='Week 1 test day'),
         dict(key='row', label='Single-arm 20 L jerrycan row, weaker arm (reps)', when='Week 1 test day'),

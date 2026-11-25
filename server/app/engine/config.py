@@ -44,23 +44,25 @@ DEFAULT_CONFIG: dict[str, Any] = {
         'meals': 'two meals, no breakfast',
         'theme': 'dark',
     },
-    'fasting': {'weekdays': ['Thu'], 'type': 'dry', 'break_time': '18:50'},
+    # No weekly fasting since 25 Nov 2026. Add weekdays here (for example ['Thu']) to bring a fast day back.
+    'fasting': {'weekdays': [], 'type': 'dry', 'break_time': '18:50'},
     # Expected Ramadan 1448 dates (the start depends on the moon sighting, about 7 or 8 Feb 2027). Set to null if not fasting.
     'ramadan': {'start': '2027-02-08', 'end': '2027-03-09'},
     'bike_start': '2027-03-15',  # cycling starts after Ramadan; nothing on a bike before this date
-    'swim_test': '2027-03-14',  # 1,500 m non-stop test (first Sunday after Ramadan)
+    'swim_test': '2027-03-12',  # 1,500 m non-stop test (first Friday after Ramadan; Sundays are home-workout days)
+    'swim_test_target_min': 60,  # goal time for the 1,500 m: within 1 hour, without stopping
     # Baseline from Activities.csv (Garmin, 3 to 14 Nov 2026; the export is in miles, converted here). Update it any time.
     'baseline': {
         'long_run_km': 8.0,
         'long_run_date': '2026-11-14',
-        'run_pace_min_km': 10.65,  # all imported runs: total time / total distance
-        'run_avg_hr': 147,
+        'run_pace_min_km': 9.6,  # easy pace on 25 Nov 2026 (9:34 per km)
+        'run_avg_hr': 149,
         'run_max_hr': 184,
         'swim_cont_m': 100,
         'swim_cont_date': '2026-10-29',
-        'swim_pace_100m': 3.05,
-        'swim_swolf': 34.7,
-        'swim_session_m': 800,
+        'swim_pace_100m': 3.03,
+        'swim_swolf': 35.4,
+        'swim_session_m': 900,
     },
     # A current niggle. While it is active the plan holds the long run, swaps hard intervals for controlled race-pace work
     # on flat ground, uses knee-friendly strength exercises and adds a daily knee-care routine. Set to null when it has settled.
@@ -213,6 +215,9 @@ def validate(cfg: dict[str, Any]) -> list[str]:
                 errs.append('Ramadan end is before its start')
         except (KeyError, TypeError, ValueError):
             errs.append('ramadan needs start and end dates, or null')
+    t = cfg.get('swim_test_target_min')
+    if t is not None and not (isinstance(t, (int, float)) and 15 <= t <= 120):
+        errs.append('swim_test_target_min must be between 15 and 120, or null')
     for k in ('bike_start', 'swim_test'):
         if cfg.get(k):
             try:

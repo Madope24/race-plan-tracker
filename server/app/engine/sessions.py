@@ -26,6 +26,7 @@ DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 NAMES = {
     'STR-C': 'Strength: lower body, single-leg (moderate)',
     'RUN-E': 'Easy run',
+    'RUN-S': 'Short easy run with strides',
     'RUN-I': 'Run: quality session',
     'RUN-L': 'Long run',
     'RUN-RAM': 'Easy run before suhoor (Ramadan)',
@@ -38,7 +39,7 @@ NAMES = {
     'STR-A': 'Strength: lower body (heavier)',
     'STR-B': 'Strength: upper body and core',
     'STR-D': 'Strength: hamstrings, shoulders and arms',
-    'STR-R': 'Strength: core, hips and arms (light, before the long run)',
+    'STR-R': 'Home workout: core, hips, arms and kegels (light, the day after the long run)',
     'STR-RAM': 'Strength: full body maintenance after iftar (Ramadan)',
     'HX-S': 'HYROX stations: strength endurance',
     'HX-SIM': 'HYROX simulation',
@@ -52,7 +53,7 @@ NAMES = {
     'FAST': 'Fasting day: easy walk, mobility and kegels after breaking the fast',
 }
 STRENGTH_CODES = ('STR-A', 'STR-B', 'STR-C', 'STR-D', 'STR-R', 'STR-RAM', 'HX-S')
-RUN_CODES = ('RUN-E', 'RUN-I', 'RUN-L', 'RUN-RAM', 'RUN-RAM-L', 'BRICK', 'HX-SIM', 'SHAKE', 'TEST')
+RUN_CODES = ('RUN-E', 'RUN-S', 'RUN-I', 'RUN-L', 'RUN-RAM', 'RUN-RAM-L', 'BRICK', 'HX-SIM', 'SHAKE', 'TEST')
 BIKE_CODES = ('BIKE-I', 'BIKE-L', 'BRICK')
 HARD_CODES = ('RUN-I', 'RUN-L', 'STR-A', 'STR-B', 'STR-C', 'STR-D', 'HX-S', 'HX-SIM', 'BRICK', 'BIKE-I', 'BIKE-L', 'SWIM-T')
 
@@ -63,6 +64,7 @@ def r05(x: float) -> float:
 
 def kind_label(kind: str, race: dict | None) -> str:
     return {
+        'run5': 'Speed: the 5 km and a 12 km long run',
         'run10': 'Foundation: the 10 km',
         'runhalf': 'Endurance: the half marathon',
         'runlong': 'Endurance: long run',
@@ -76,6 +78,7 @@ def kind_label(kind: str, race: dict | None) -> str:
 
 
 KIND_PURPOSE = {
+    'run5': 'Pace work for a faster 5 km, the long run growing to 12 km, leg strength and kegels three times a week, and four swims a week for technique, breathing and SWOLF.',
     'run10': 'Consistent running habits, run/walk efficiency, basic strength and swim endurance, ready for the 10 km.',
     'runhalf': 'Long run grows step by step with easier weeks, aerobic base, muscular endurance and a longer non-stop swim.',
     'runlong': 'Long aerobic running with recovery weeks.',
@@ -88,14 +91,26 @@ KIND_PURPOSE = {
 }
 
 # block peaks: long run km, non-stop swim m, long ride min
-PEAK_LONG = {'run10': 10, 'runhalf': 18, 'runlong': 28, 'runbase': 12, 'tribase': 14, 'hyrox': 12, 'olympic': 14, 'half_ironman': 18}
-PEAK_SWIM = {'run10': 1500, 'runhalf': 1500, 'runlong': 1500, 'runbase': 1500, 'tribase': 1800, 'hyrox': 1800, 'olympic': 1900, 'half_ironman': 2300}
+PEAK_LONG = {'run5': 12, 'run10': 10, 'runhalf': 18, 'runlong': 28, 'runbase': 12, 'tribase': 14, 'hyrox': 12, 'olympic': 14, 'half_ironman': 18}
+PEAK_SWIM = {
+    'run5': 1500,
+    'run10': 1500,
+    'runhalf': 1500,
+    'runlong': 1500,
+    'runbase': 1500,
+    'tribase': 1800,
+    'hyrox': 1800,
+    'olympic': 1900,
+    'half_ironman': 2300,
+}
 PEAK_RIDE = {'tribase': 150, 'hyrox': 150, 'olympic': 180, 'half_ironman': 240}
 
 
 def race_kind(r: dict) -> str:
     if r['type'] == 'run':
         km = r.get('run_km') or 10
+        if km <= 6:
+            return 'run5'
         return 'run10' if km <= 12 else ('runhalf' if km <= 25 else 'runlong')
     if r['type'] == 'hyrox':
         return 'hyrox'
@@ -107,7 +122,7 @@ def race_title(r: dict) -> str:
     goal = ''
     if t:
         h, m = divmod(int(t), 60)
-        goal = f' (target under {h} h {m:02d})' if m else f' (target under {h} hours)'
+        goal = f' (target under {m} min)' if not h else (f' (target under {h} h {m:02d})' if m else f' (target under {h} hours)')
     if r['type'] == 'triathlon':
         return f'{r["name"].upper()}: {r.get("swim_m", 0):,} m swim, {r.get("bike_km", 0):g} km bike, {r.get("run_km", 0):g} km run{goal}'
     if r['type'] == 'hyrox':
@@ -232,7 +247,8 @@ class Calendar:
             elif wt == 'easy':
                 c['long_km'] = r05(min(L, peak) * 0.75)
             elif wt == 'taper':
-                c['long_km'] = r05(min(L, peak) * (0.75 if c['weeks_to'] == 1 else 0.85))
+                # a 5 km needs little taper: the long run stays, easy, so the 12 km habit holds
+                c['long_km'] = r05(min(L, peak) * (1.0 if kind == 'run5' else 0.75 if c['weeks_to'] == 1 else 0.85))
             elif wt == 'race':
                 c['long_km'] = None
                 rk = c['race'].get('run_km') or 0
@@ -285,28 +301,33 @@ class Calendar:
                 'Mon': (None, 'STR-RAM'),
                 'Tue': ('RUN-RAM', None),
                 'Wed': (None, 'SWIM-RAM-T'),
+                'Thu': (None, 'SWIM-RAM-E'),
                 'Fri': (None, 'STR-RAM'),
                 'Sat': ('RUN-RAM-L', None),
-                'Sun': ('REST', 'SWIM-RAM-E'),
+                'Sun': ('REST', 'MOB'),
             }.get(wd, (None, 'MOB'))
         if d == self.swim_test:
             return ('REST', 'SWIM-E')
         # Hard days together (Monday: quality run + heavier legs), Tuesday rests the legs, Wednesday is moderate,
         # Friday is light so the Saturday long session starts fresh.
-        if kind in ('run10', 'runhalf', 'runlong', 'runbase'):
+        # No fast day. Legs are trained Monday and Wednesday, so they have three days before the Saturday long run.
+        # Thursday pairs a short run with a technique swim; Friday is the non-stop swim; Sunday is a light home workout only.
+        if kind in ('run5', 'run10', 'runhalf', 'runlong', 'runbase'):
             T = {
                 'Mon': ('RUN-I', 'STR-A'),
                 'Tue': ('STR-B', 'SWIM-T'),
                 'Wed': ('RUN-E', 'STR-C'),
-                'Fri': ('MOB', 'SWIM-R'),
+                'Thu': ('RUN-S', 'SWIM-T'),
+                'Fri': ('MOB', 'SWIM-E'),
                 'Sat': ('RUN-L', None),
-                'Sun': ('REST', 'SWIM-E'),
+                'Sun': ('MOB', 'STR-R'),
             }
         elif kind == 'hyrox':
             T = {
                 'Mon': ('RUN-I', 'STR-A'),
                 'Tue': ('STR-B', 'SWIM-T'),
                 'Wed': ('BIKE-I', 'HX-S'),
+                'Thu': ('MOB', 'STR-D'),
                 'Fri': ('RUN-E', 'SWIM-R'),
                 'Sat': ('HX-SIM' if c['alt'] and wt == 'build' else 'RUN-L', None),
                 'Sun': ('BIKE-L', 'SWIM-E'),
@@ -316,6 +337,7 @@ class Calendar:
                 'Mon': ('RUN-I', 'STR-A'),
                 'Tue': ('STR-B', 'SWIM-T'),
                 'Wed': ('BIKE-I', 'STR-C'),
+                'Thu': ('MOB', 'STR-D'),
                 'Fri': ('RUN-E', 'SWIM-R'),
                 'Sat': ('BRICK' if c['alt'] or wt != 'build' else 'RUN-L', None),
                 'Sun': ('BIKE-L', 'SWIM-E'),
@@ -342,6 +364,10 @@ class Calendar:
                 am, pm = ('REST', None) if last['type'] != 'run' else ('REST', 'SWIM-R')
             elif since == 2:
                 am, pm = (None, 'MOB')
+        # ---- the athlete's rule: Sundays are home workouts only (no pool, no road run)
+        if wd == 'Sun':
+            am = None if am and (am.startswith('SWIM') or am in RUN_CODES) else am
+            pm = None if pm and (pm.startswith('SWIM') or pm in RUN_CODES) else pm
         # ---- the athlete's own rule, if set: never a run and a swim on one day (the swim moves out)
         if self.no_run_swim and am in RUN_CODES and pm and pm.startswith('SWIM'):
             pm = None
@@ -367,6 +393,7 @@ class Calendar:
                 'BIKE-I',
                 'STR-D',
                 'RUN-E',
+                'RUN-S',
                 'SWIM-R',
                 'STR-R',
                 'MOB',
@@ -401,7 +428,7 @@ KEGEL_CIRCUIT_KNEE = [
     for x in KEGEL_CIRCUIT
 ]
 KEGEL = [('Kegel circuit (10 min)', KEGEL_CIRCUIT), ('Kegel circuit, knee-friendly (10 min)', KEGEL_CIRCUIT_KNEE)]
-KEGEL_DAILY = 'Kegels, 5 min lying down: 1 x 8 slow holds (5 s squeeze, 10 s relax), 1 x 10 quick squeezes, 6 relaxation breaths. Relax fully between squeezes.'
+KEGEL_DAILY = 'Kegels twice a day, 5 min each (morning and evening): 1 x 10 slow holds (5 s squeeze, 10 s relax), 1 x 10 quick squeezes, 6 relaxation breaths. Relax fully between squeezes.'
 
 
 def kegel_for(code, w, knee=False):
@@ -440,6 +467,7 @@ STR = {
         ('sec', ['Reverse lunge', 'Backpack reverse lunge', 'Backpack walking lunge'], 'Reps per leg'),
         ('sec', ['Glute bridge', 'Single-leg glute bridge', 'Backpack hip thrust'], 'Glutes and hamstrings'),
         ('acc', ['Calf raise on a step', 'Single-leg calf raise', 'Single-leg calf raise'], 'Calves and Achilles. Step, door threshold or thick book'),
+        ('acc', ['Farmer carry', 'Farmer carry', 'Farmer carry'], JERRY + ' in each hand. Grip, forearms, shoulders and legs: the HYROX farmers carry'),
         ('core', ['Front plank', 'Side plank', 'Pallof press'], 'Core and lower back. Pallof press needs a band; Side plank if you have none'),
     ],
     'STR-B': [
@@ -449,7 +477,8 @@ STR = {
         ('sec', ['Water-bottle lateral raise', 'Water-bottle lateral raise', 'Water-bottle front raise'], '1.5 L bottles. Shoulder width'),
         ('sec', ['Chair dip', 'Overhead triceps extension', 'Chair dip'], 'Triceps'),
         ('acc', ['Jerrycan biceps curl', 'Jerrycan hammer curl', 'Jerrycan hammer curl'], JERRY + '. Biceps and forearms'),
-        ('acc', ['Diamond push-up', 'Diamond push-up', 'Diamond push-up'], 'Triceps. Knees down if needed'),
+        ('acc', ['Wrist curls (palms up and down)'] * 3, 'Forearms and grip for HYROX carries and the sled pull'),
+        ('acc', ['Bent-over rear-delt raise'] * 3, '1.5 L bottles. Rear shoulders: balances the pressing and the swim pull'),
         ('acc', ['Prone Y-T-W raise', 'Prone Y-T-W raise', 'Prone Y-T-W raise'], 'Rear shoulders; protects the shoulders for swimming'),
     ],
     'STR-D': [
@@ -465,7 +494,9 @@ STR = {
         ('sec', ['Single-leg glute bridge'] * 3, 'Hips and hamstrings, light'),
         ('acc', ['Single-leg calf raise'] * 3, 'Calves and Achilles: protects you on the long run'),
         ('acc', ['Water-bottle lateral raise'] * 3, 'Shoulders'),
-        ('acc', ['Jerrycan hammer curl'] * 3, 'Arms'),
+        ('acc', ['Bent-over rear-delt raise'] * 3, 'Rear shoulders'),
+        ('acc', ['Jerrycan hammer curl'] * 3, 'Arms and forearms'),
+        ('acc', ['Wrist curls (palms up and down)'] * 3, 'Forearms and grip'),
         ('core', ['Dead bug', 'Dead bug', 'Mountain climber'], 'Core'),
         ('core', ['Side plank'] * 3, 'Time per side'),
         ('core', ['Bird dog'] * 3, 'Back and hips'),
@@ -485,6 +516,8 @@ STR['STR-C'] = [
     ('sec', ['Backpack Bulgarian split squat'] * 3, 'Back foot on a chair. Bodyweight first; add the backpack when 3 x 8 is easy. Reps per leg'),
     ('main', ['Single-leg Romanian deadlift'] * 3, 'Hold a chair for balance. Reps per leg. Hamstrings and balance'),
     ('ham', ['Towel hamstring curl', 'Towel hamstring curl', 'Nordic hamstring lower'], 'Hamstrings'),
+    ('sec', ['Step-up', 'Step-up', 'Step-up'], 'Sturdy chair or step, knee height. Backpack from level 2. Reps per leg: drive through the front heel'),
+    ('sec', ['Backpack thruster'] * 3, BACKPACK + '. Squat into an overhead press: legs and shoulders together, the HYROX wall-ball movement'),
     ('sec', ['Single-leg glute bridge'] * 3, 'Reps per leg. Glutes'),
     ('acc', ['Single-leg calf raise'] * 3, 'Reps per leg. Calves and Achilles'),
     ('acc', ['Side-lying clam with kegel'] * 3, 'Reps per side. Hip strength keeps the knees stable'),
@@ -497,6 +530,7 @@ STR['STR-A-KNEE'] = [
     ('sec', ['Glute bridge', 'Single-leg glute bridge', 'Backpack hip thrust'], 'Glutes and hamstrings'),
     ('core', ['Wall sit'] * 3, 'Isometric hold with thighs above parallel. Only if the knee is 0 to 2 out of 10; skip it otherwise'),
     ('acc', ['Calf raise on a step', 'Single-leg calf raise', 'Single-leg calf raise'], 'Calves and Achilles'),
+    ('acc', ['Farmer carry'] * 3, JERRY + ' in each hand. Grip, forearms and shoulders; walk tall and slowly, knee-friendly'),
     ('core', ['Front plank', 'Side plank', 'Side plank'], 'Core'),
 ]
 STR['STR-C-KNEE'] = [
@@ -529,10 +563,14 @@ def strength_core(code, c):
             r = '20 per leg'
         if ex == 'Wall sit':
             r = '30 s'
+        if ex == 'Farmer carry':
+            r, rest = {1: '30 m', 2: '40 m', 3: '50 m'}[lv], '60 s'
+        if ex == 'Wrist curls (palms up and down)':
+            r = '15 up + 12 down'
         if ex in ('Side-lying leg raise', 'Straight-leg raise', 'Side-lying clam with kegel'):
             r = '12'
         if code == 'STR-R':
-            s, eff = 2, 'Light: effort 6 out of 10, the long run is tomorrow'
+            s, eff = 2, 'Light home session: effort 6 out of 10, the day after the long run'
         if code == 'STR-RAM':
             s, eff = 2, 'Maintenance while fasting: effort 6 out of 10, 60 to 90 min after iftar, water first'
         if code == 'STR-C' and c['wtype'] == 'build':
@@ -598,6 +636,14 @@ def fmt_pace(p):
 
 
 RUNI = {
+    'run5': [
+        '8 x (400 m at 5 km pace{rp} / 90 s walk)',
+        '5 x (800 m at 5 km pace{rp} / 2 min jog)',
+        'Tempo: 10 min easy, 15 min comfortably hard (about 15 s per km slower than 5 km pace), 5 min easy',
+        '3 x (1 km at 5 km pace{rp} / 2 min jog)',
+        '6 x (1 min fast / 1 min jog), then 4 x 200 m quick and relaxed / 200 m walk',
+        '2 x (1.5 km at 5 km pace{rp} / 3 min jog)',
+    ],
     'run10': [
         '6 x (1 min brisk run / 2 min walk)',
         '8 x (1 min brisk run / 1.5 min walk)',
@@ -671,6 +717,8 @@ def run_main(code, c):
         return '35 to 45 min easy run/walk', 'Before suhoor. Walk breaks every 5 min. Never run in the daytime heat while fasting'
     if code == 'RUN-L':
         km = c['long_km'] or 5
+        if wt == 'taper' and kind == 'run5':
+            return f'{km:g} km easy, 1 min walk every 10 min; last 1 km steady (not 5 km pace)', 'Easy and slow: conversation pace'
         if wt == 'taper' and rp and c['weeks_to'] == 1:
             mid = max(2, round(km / 2))
             return (
@@ -684,6 +732,10 @@ def run_main(code, c):
         if knee:
             return f'{km:g} km easy on a flat route{walk} (distance held while the knee settles)', 'Easy and slow: conversation pace'
         return f'{km:g} km easy{walk}{extra}', 'Easy and slow: conversation pace'
+    if code == 'RUN-S':
+        if wt == 'recovery':
+            return '20 min very easy', 'Recovery week: very easy'
+        return '20 to 25 min easy + 4 x 20 s strides', 'Easy; strides quick and relaxed, full recovery between them. Short on purpose: the swim is this evening'
     if code == 'RUN-E':
         if wt == 'recovery':
             return '25 min very easy', 'Recovery week: very easy'
@@ -714,7 +766,10 @@ def run_main(code, c):
     if wt == 'easy':
         return '30 min easy with 4 x 20 s strides (easy week)', 'Easy'
     lst = RUNI.get(kind, RUNI['runbase'])
-    return lst[(c['block_week'] - 1) % len(lst)], 'Hard parts at 7 to 8 out of 10; recoveries easy'
+    main = lst[(c['block_week'] - 1) % len(lst)].replace('{rp}', rp_txt)
+    if kind == 'run5':
+        return main, 'Hard parts at 8 out of 10, even pace on every repeat (the last as fast as the first); recoveries easy. Lap button at each repeat'
+    return main, 'Hard parts at 7 to 8 out of 10; recoveries easy'
 
 
 def run_rows(code, c, cfg):
@@ -742,6 +797,9 @@ def run_rows(code, c, cfg):
         )
     )
     rows.append(('Main', main, 1, '', '', 'Start before 06:30 to beat the heat. ' + eff))
+    if 'strides' in main:
+        n = int(main.split(' x 20 s strides')[0].split()[-1]) if ' x 20 s strides' in main else 4
+        rows.append(('Strides', 'Strides', n, '20 s', 'walk back', 'After the easy part: fast and relaxed, about 85%, full recovery between them'))
     if code != 'SHAKE':
         rows.append(
             (
@@ -811,6 +869,17 @@ def swim_rows(code, c, d, cal):
                 'The breaststroke whip kick twists the inside of the knee. Push off the wall gently with both feet and kick from the hips',
             )
         )
+    if not code.startswith('SWIM-RAM') and code != 'SWIM-R':
+        rows.append(
+            (
+                'Breathing (pumzi)',
+                'Bubble breathing',
+                2,
+                '10 breaths',
+                '20 s',
+                'Hum out through the nose under water until the air is gone, then turn and take a quick breath in. Never hold your breath',
+            )
+        )
     C = c['swim_cont'] or 300
     if code in ('SWIM-E', 'SWIM-RAM-E'):
         if c['w'] == 1:
@@ -829,6 +898,17 @@ def swim_rows(code, c, d, cal):
         else:
             rows.append(('Main', 'Non-stop freestyle', 1, f'{C:,} m', '', 'Steady, 5 to 6 out of 10. Do not stop at the wall: touch and go'))
             if not easy and code == 'SWIM-E':
+                rows.append(
+                    (
+                        'SWOLF check',
+                        'Count strokes on each length; note SWOLF on the watch',
+                        4,
+                        '1 length',
+                        '30 s',
+                        'Same easy effort each time. Try to take 1 fewer stroke per length by reaching further. A lower SWOLF than last week is progress',
+                    )
+                )
+            if not easy and code == 'SWIM-E':
                 n = 2 if kind in ('run10', 'runhalf') else 4
                 rows.append(('Main', 'Freestyle repeats', n, '100 m', '15 s', '7 out of 10. Same time on each'))
             if kind in ('tribase', 'olympic', 'half_ironman', 'hyrox') and not easy:
@@ -837,12 +917,23 @@ def swim_rows(code, c, d, cal):
         n = 2 if (easy or code == 'SWIM-RAM-T') else {'run10': 4, 'runhalf': 6}.get(kind, 6)
         a, b = HT.DRILL_PAIRS[(c['w'] - 1) % len(HT.DRILL_PAIRS)]
         rows += [HT.drill_row(a, n <= 2), HT.drill_row(b, n <= 2)]
-        if kind in ('tribase', 'olympic', 'half_ironman') and not easy:
-            rows.append(HT.drill_row('Sighting drill', True))
-        if kind in ('run10', 'ramadan') or code == 'SWIM-RAM-T':
+        if kind in ('run5', 'run10', 'runhalf', 'tribase', 'olympic', 'half_ironman') and not easy:
+            rows.append(HT.drill_row('Sighting drill', True))  # open-water skill for the Ironman swim, practised early
+        if kind in ('run5', 'run10', 'ramadan') or code == 'SWIM-RAM-T':
             rows.append(
                 ('Main', 'Freestyle, breathing every 3 strokes', n, '100 m', '20 s', '6 out of 10. Count strokes per length; try to take 1 fewer each repeat')
             )
+            if kind in ('run5', 'run10') and not easy:
+                rows.append(
+                    (
+                        'Main',
+                        'Even-pace freestyle',
+                        4,
+                        '50 m',
+                        '30 s',
+                        'Same time on each, at your normal pace (about 1:30). The 1,500 m in 1 hour needs only 2:00 per 50 m: the goal is to swim it without stopping',
+                    )
+                )
         elif kind == 'runhalf':
             rows.append(('Main', 'Steady freestyle intervals', n, '100 m', '15 s', '7 out of 10. Same time on each repeat: pacing practice'))
             if not easy:
@@ -1108,7 +1199,7 @@ def session_rows(code, c, cal, d):
     cfg = cal.cfg
     if code in STRENGTH_CODES:
         return strength_rows(code, c)
-    if code in ('RUN-E', 'RUN-I', 'RUN-L', 'RUN-RAM', 'RUN-RAM-L'):
+    if code in ('RUN-E', 'RUN-S', 'RUN-I', 'RUN-L', 'RUN-RAM', 'RUN-RAM-L'):
         return run_rows(code, c, cfg)
     if code.startswith('SWIM'):
         return swim_rows(code, c, d, cal)
@@ -1122,7 +1213,11 @@ def session_rows(code, c, cal, d):
         return (
             [('Main', 'Easy walk', 1, '20 to 30 min', '', 'Conversation pace. Keeps the legs loose without loading them')]
             + stretch_rows('M-FLOW', 'Mobility')
-            + [('Kegels', 'Kegels lying down, 5 min', 1, '1 x 8 slow holds, 1 x 10 quick squeezes, 6 relaxation breaths', '', 'Relax fully between squeezes')]
+            + [
+                ('Kegels', 'Slow kegel holds', 1, '10', '', 'Lying down: squeeze and lift for 5 s, then relax fully for 10 s'),
+                ('Kegels', 'Quick kegel squeezes', 1, '10', '', 'A strong 1 s squeeze, then 2 s of full relaxation'),
+                ('Kegels', 'Relaxation breathing', 1, '6 slow breaths', '', 'Let the pelvic floor drop and relax on every breath in'),
+            ]
         )
     if code == 'REST':
         return rest_rows()

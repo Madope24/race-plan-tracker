@@ -62,7 +62,7 @@ When staging is green, open **Actions > deploy > Review deployments**, tick `pro
 ```
 curl http://164.68.97.148:8090/health
 ```
-Check the server: it should show `"ok": true` and `"version": "2.2.0"`.
+Check the server: it should show `"ok": true` and `"version": "2.3.0"`.
 
 ## 4. Install the new app on your phone
 
@@ -76,12 +76,12 @@ The app is now called **EnduraForge** and installs next to the old Salum Tracker
 For a permanent download link, tag a release:
 
 ```
-git tag v2.2.0
+git tag v2.3.0
 ```
-Mark this commit as version 2.2.0.
+Mark this commit as version 2.3.0.
 
 ```
-git push origin v2.2.0
+git push origin v2.3.0
 ```
 This starts `release`, which attaches the APK to **Releases**.
 

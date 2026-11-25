@@ -112,7 +112,7 @@ def test_v1_prefix_and_public_plan(client):
 
 def test_config_races_and_plan_regeneration(client, auth):
     c = client.get('/api/config', headers=auth).json()
-    assert c['plan_version'] == PLAN['version'] and c['config']['fasting']['weekdays'] == ['Thu']
+    assert c['plan_version'] == PLAN['version'] and c['config']['fasting']['weekdays'] == []
     r = client.put(
         '/api/races/rhyrox', json={'name': 'HYROX Cape Town', 'type': 'hyrox', 'date': '2027-06-26', 'target_min': 110, 'division': 'Men Open'}, headers=auth
     )
